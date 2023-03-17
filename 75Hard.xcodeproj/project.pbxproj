@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		395B5E1A29C5035D002CFB13 /* _5HardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1929C5035D002CFB13 /* _5HardApp.swift */; };
+		395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1929C5035D002CFB13 /* 75HardApp.swift */; };
 		395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1B29C5035D002CFB13 /* ContentView.swift */; };
 		395B5E1E29C5035E002CFB13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395B5E1D29C5035E002CFB13 /* Assets.xcassets */; };
 		395B5E2129C5035E002CFB13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395B5E2029C5035E002CFB13 /* Preview Assets.xcassets */; };
@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		395B5E1629C5035D002CFB13 /* 75Hard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 75Hard.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		395B5E1929C5035D002CFB13 /* _5HardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5HardApp.swift; sourceTree = "<group>"; };
+		395B5E1929C5035D002CFB13 /* 75HardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 75HardApp.swift; sourceTree = "<group>"; };
 		395B5E1B29C5035D002CFB13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		395B5E1D29C5035E002CFB13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		395B5E2029C5035E002CFB13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		395B5E1829C5035D002CFB13 /* 75Hard */ = {
 			isa = PBXGroup;
 			children = (
-				395B5E1929C5035D002CFB13 /* _5HardApp.swift */,
+				395B5E1929C5035D002CFB13 /* 75HardApp.swift */,
 				395B5E1B29C5035D002CFB13 /* ContentView.swift */,
 				395B5E1D29C5035E002CFB13 /* Assets.xcassets */,
 				395B5E1F29C5035E002CFB13 /* Preview Content */,
@@ -258,7 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
-				395B5E1A29C5035D002CFB13 /* _5HardApp.swift in Sources */,
+				395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
