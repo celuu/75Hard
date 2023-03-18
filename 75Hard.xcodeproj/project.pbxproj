@@ -14,6 +14,8 @@
 		395B5E2B29C5035E002CFB13 /* _5HardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E2A29C5035E002CFB13 /* _5HardTests.swift */; };
 		395B5E3529C5035E002CFB13 /* _5HardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E3429C5035E002CFB13 /* _5HardUITests.swift */; };
 		395B5E3729C5035E002CFB13 /* _5HardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E3629C5035E002CFB13 /* _5HardUITestsLaunchTests.swift */; };
+		39FA788C29C52382001452FF /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA788B29C52382001452FF /* PageView.swift */; };
+		39FA788E29C55E93001452FF /* LineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA788D29C55E93001452FF /* LineItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		395B5E3029C5035E002CFB13 /* 75HardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 75HardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B5E3429C5035E002CFB13 /* _5HardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5HardUITests.swift; sourceTree = "<group>"; };
 		395B5E3629C5035E002CFB13 /* _5HardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5HardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		39FA788B29C52382001452FF /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		39FA788D29C55E93001452FF /* LineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +100,9 @@
 			children = (
 				395B5E1929C5035D002CFB13 /* 75HardApp.swift */,
 				395B5E1B29C5035D002CFB13 /* ContentView.swift */,
+				39FA788B29C52382001452FF /* PageView.swift */,
 				395B5E1D29C5035E002CFB13 /* Assets.xcassets */,
+				39FA788D29C55E93001452FF /* LineItemView.swift */,
 				395B5E1F29C5035E002CFB13 /* Preview Content */,
 			);
 			path = 75Hard;
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
+				39FA788C29C52382001452FF /* PageView.swift in Sources */,
 				395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */,
+				39FA788E29C55E93001452FF /* LineItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
