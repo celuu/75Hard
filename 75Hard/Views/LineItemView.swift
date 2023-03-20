@@ -13,7 +13,7 @@ struct LineItemView: View {
     
     var body: some View {
         HStack{
-            NavigationLink(destination: Text("Detail 1"), label:{
+            NavigationLink(destination: PageView(), label:{
                 Text (title)
             })
             Image(systemName: "checkmark.circle")

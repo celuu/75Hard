@@ -17,6 +17,8 @@ struct ContentView: View {
         "Follow Macros",
         "Progress Photo"
     ]
+    
+    @State var title: String = ""
 
     var body: some View {
             List {

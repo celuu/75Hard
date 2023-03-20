@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Page: View {
+struct PageView: View {
     
     @State var userInput: String = ""
     
@@ -16,12 +16,17 @@ struct Page: View {
             VStack{
                 TextField("Type insight!", text: $userInput)
                     .frame(height: 55)
+                    .padding(.horizontal)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(10)
                 Button(action: {
                     
                 }, label: {
                     Text("Save")
+                        .foregroundColor(.white)
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
                         .cornerRadius(10)
                 }
                 )
@@ -36,7 +41,7 @@ struct Page: View {
 struct Water_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            Page()
+            PageView()
         }
     }
 }
