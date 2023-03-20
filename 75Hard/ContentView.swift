@@ -19,16 +19,14 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        NavigationView {
             List {
                 ForEach(items, id: \.self) {
                     item in LineItemView(title: item)
                 }
             }
+            .listStyle(PlainListStyle())
             .navigationTitle("75 Hard - Day BLANK")
             .navigationBarTitleDisplayMode(.inline)
-
-        }
 
     }
 
@@ -38,7 +36,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationView {
+            ContentView()
+        }
     }
 }
 

@@ -24,6 +24,6 @@ struct LineItemView: View {
 
 struct LineItemView_Previews: PreviewProvider {
     static var previews: some View {
-        LineItemView(title: "1 Gallon of Water")
+        LineItemView(title: "")
     }
 }
