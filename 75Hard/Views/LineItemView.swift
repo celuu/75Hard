@@ -9,21 +9,28 @@ import SwiftUI
 
 struct LineItemView: View {
     
-    let title: String
+    let item: ItemModel
     
     var body: some View {
         HStack{
             NavigationLink(destination: PageView(), label:{
-                Text (title)
+                Text (item.title)
             })
-            Image(systemName: "checkmark.circle")
+            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(item.isCompleted ? .green : .red)
+                
         }
+        .font(.title2)
+        .padding()
     }
 }
 
 
 struct LineItemView_Previews: PreviewProvider {
+    
+    static var item1 = ItemModel(title: "", isCompleted: false)
+    
     static var previews: some View {
-        LineItemView(title: "")
+        LineItemView(item: item1)
     }
 }

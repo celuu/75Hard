@@ -9,21 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var items: [String] = [
-        "1 Gallon of Water",
-        "Read 10 Pages",
-        "45 Min Workout",
-        "45 Min Workout - Outside",
-        "Follow Macros",
-        "Progress Photo"
+    @State var items: [ItemModel] = [
+        ItemModel(title: "1 Gallon of Water", isCompleted: false),
+        ItemModel(title: "Read 10 Pages", isCompleted: false),
+        ItemModel(title: "45 Min Workout", isCompleted: false),
+        ItemModel(title: "45 Min Workout - Outside", isCompleted: false),
+        ItemModel(title: "Follow Macros", isCompleted: false),
+        ItemModel(title: "Progress Photo", isCompleted: false)
     ]
     
     @State var title: String = ""
 
     var body: some View {
             List {
-                ForEach(items, id: \.self) {
-                    item in LineItemView(title: item)
+                ForEach(items) {
+                    item in LineItemView(item: item)
                 }
             }
             .listStyle(PlainListStyle())
