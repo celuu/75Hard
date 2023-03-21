@@ -9,7 +9,11 @@ import SwiftUI
 
 struct AddHabitView: View {
     
-    @State var userInput:String = "";
+    @Environment(\.presentationMode) var presentationMode
+    @State var userInput:String = ""
+    @EnvironmentObject var listViewModel: ListViewModel
+    @State var alertTitle:String = ""
+    @State var showAlert:Bool = false
     
     var body: some View {
         ScrollView {
@@ -19,9 +23,8 @@ struct AddHabitView: View {
                     .padding(.horizontal)
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
-                Button(action: {
-                    
-                }, label: {
+                Button(action: saveButtonPressed,
+                       label: {
                     Text("Save")
                         .foregroundColor(.white)
                         .frame(height: 55)
@@ -34,7 +37,28 @@ struct AddHabitView: View {
             
         }
         .navigationTitle("Add an Item")
+        .alert(isPresented: $showAlert, content: getAlert)
         .padding()
+    }
+    
+    func saveButtonPressed(){
+        if textIsGood(){
+            listViewModel.addItem(title: userInput)
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func textIsGood() -> Bool{
+        if(userInput.count < 3){
+            alertTitle = "Item must be at least 3 characters long"
+            showAlert.toggle()
+            return false
+        }
+        return true
+    }
+    
+    func getAlert() -> Alert {
+        return Alert(title: Text(alertTitle))
     }
 }
 
@@ -43,5 +67,6 @@ struct AddHabit_Previews: PreviewProvider {
         NavigationView {
             AddHabitView()
         }
+        .environmentObject(ListViewModel())
     }
 }

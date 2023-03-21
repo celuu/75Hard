@@ -9,25 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var items: [ItemModel] = [
-        ItemModel(title: "1 Gallon of Water", isCompleted: false),
-        ItemModel(title: "Read 10 Pages", isCompleted: false),
-        ItemModel(title: "45 Min Workout", isCompleted: false),
-        ItemModel(title: "45 Min Workout - Outside", isCompleted: false),
-        ItemModel(title: "Follow Macros", isCompleted: false),
-        ItemModel(title: "Progress Photo", isCompleted: false),
-        ItemModel(title: "Did not drink", isCompleted: false)
-    ]
+    @EnvironmentObject var listViewModel: ListViewModel;
     
-    @State var title: String = ""
+
 
     var body: some View {
             List {
-                ForEach(items) {
+                ForEach(listViewModel.items) {
                     item in LineItemView(item: item)
                 }
-                .onDelete(perform: deleteItem)
-                .onMove(perform: moveItem)
+                .onDelete(perform: listViewModel.deleteItem)
+                .onMove(perform: listViewModel.moveItem)
             }
             .listStyle(PlainListStyle())
             .navigationTitle("75 Hard - Day BLANK")
@@ -40,14 +32,6 @@ struct ContentView: View {
 
     }
     
-    func deleteItem(indexSet: IndexSet){
-        items.remove(atOffsets: indexSet)
-    }
-    
-    func moveItem(from: IndexSet, to: Int){
-        items.move(fromOffsets: from, toOffset: to)
-    }
-
     
 }
 
@@ -57,6 +41,7 @@ struct ContentView_Previews: PreviewProvider {
         NavigationView {
             ContentView()
         }
+        .environmentObject(ListViewModel())
     }
 }
 
