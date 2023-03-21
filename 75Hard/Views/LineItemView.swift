@@ -10,6 +10,7 @@ import SwiftUI
 struct LineItemView: View {
     
     let item: ItemModel
+    @EnvironmentObject var listViewModel: ListViewModel;
     
     var body: some View {
         HStack{
@@ -18,6 +19,11 @@ struct LineItemView: View {
             })
             Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
                 .foregroundColor(item.isCompleted ? .green : .red)
+                .onTapGesture {
+                    withAnimation(.linear){
+                        listViewModel.updateItem(item: item)
+                    }
+                }
                 
         }
         .font(.title2)
@@ -33,4 +39,5 @@ struct LineItemView_Previews: PreviewProvider {
     static var previews: some View {
         LineItemView(item: item1)
     }
+    
 }

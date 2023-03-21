@@ -11,12 +11,11 @@ struct ContentView: View {
     
     @EnvironmentObject var listViewModel: ListViewModel;
     
-
-
     var body: some View {
             List {
                 ForEach(listViewModel.items) {
                     item in LineItemView(item: item)
+
                 }
                 .onDelete(perform: listViewModel.deleteItem)
                 .onMove(perform: listViewModel.moveItem)
