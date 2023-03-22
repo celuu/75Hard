@@ -19,6 +19,7 @@
 		39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789129C8F2D7001452FF /* ItemModel.swift */; };
 		39FA789529C92E50001452FF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789429C92E50001452FF /* ListViewModel.swift */; };
 		39FA789729C93685001452FF /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789629C93685001452FF /* AddHabit.swift */; };
+		39FA789929CAA918001452FF /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789829CAA918001452FF /* WorkoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		39FA789129C8F2D7001452FF /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		39FA789429C92E50001452FF /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		39FA789629C93685001452FF /* AddHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabit.swift; sourceTree = "<group>"; };
+		39FA789829CAA918001452FF /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				39FA788B29C52382001452FF /* PageView.swift */,
 				39FA789629C93685001452FF /* AddHabit.swift */,
+				39FA789829CAA918001452FF /* WorkoutView.swift */,
 				39FA788D29C55E93001452FF /* LineItemView.swift */,
 			);
 			path = Views;
@@ -298,6 +301,7 @@
 			files = (
 				39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */,
 				39FA789729C93685001452FF /* AddHabit.swift in Sources */,
+				39FA789929CAA918001452FF /* WorkoutView.swift in Sources */,
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
 				39FA789529C92E50001452FF /* ListViewModel.swift in Sources */,
 				39FA788C29C52382001452FF /* PageView.swift in Sources */,

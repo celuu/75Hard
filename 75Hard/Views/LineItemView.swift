@@ -14,7 +14,7 @@ struct LineItemView: View {
     
     var body: some View {
         HStack{
-            NavigationLink(destination: PageView(), label:{
+            NavigationLink(destination: getDestination(pageType: item.pageType), label:{
                 Text (item.title)
             })
             Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
@@ -29,12 +29,32 @@ struct LineItemView: View {
         .font(.title2)
         .padding()
     }
+    
+    func getDestination(pageType: ItemModel.PageType) -> any View {
+        switch pageType {
+        case .water:
+            return PageView()
+        case .reading:
+            return PageView()
+        case .workout:
+            return WorkoutView()
+        case .outsideWorkout:
+            return WorkoutView()
+        case .macros:
+            return PageView()
+        case .photo:
+            return PageView()
+        case .drink:
+            return PageView()
+        }
+    }
+    
 }
 
 
 struct LineItemView_Previews: PreviewProvider {
     
-    static var item1 = ItemModel(title: "", isCompleted: false)
+    static var item1 = ItemModel(title: "", isCompleted: false, pageType: .water)
     
     static var previews: some View {
         LineItemView(item: item1)
