@@ -20,6 +20,10 @@
 		39FA789529C92E50001452FF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789429C92E50001452FF /* ListViewModel.swift */; };
 		39FA789729C93685001452FF /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789629C93685001452FF /* AddHabit.swift */; };
 		39FA789929CAA918001452FF /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789829CAA918001452FF /* WorkoutView.swift */; };
+		39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789A29CAB9C6001452FF /* MacroView.swift */; };
+		39FA789D29CAB9E4001452FF /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789C29CAB9E4001452FF /* AddPhotoView.swift */; };
+		39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789E29CAB9F9001452FF /* WaterView.swift */; };
+		39FA78A129CC0624001452FF /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA78A029CC0624001452FF /* DrinkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		39FA789429C92E50001452FF /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		39FA789629C93685001452FF /* AddHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabit.swift; sourceTree = "<group>"; };
 		39FA789829CAA918001452FF /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		39FA789A29CAB9C6001452FF /* MacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroView.swift; sourceTree = "<group>"; };
+		39FA789C29CAB9E4001452FF /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
+		39FA789E29CAB9F9001452FF /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
+		39FA78A029CC0624001452FF /* DrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +156,10 @@
 				39FA788B29C52382001452FF /* PageView.swift */,
 				39FA789629C93685001452FF /* AddHabit.swift */,
 				39FA789829CAA918001452FF /* WorkoutView.swift */,
+				39FA789A29CAB9C6001452FF /* MacroView.swift */,
+				39FA78A029CC0624001452FF /* DrinkView.swift */,
+				39FA789C29CAB9E4001452FF /* AddPhotoView.swift */,
+				39FA789E29CAB9F9001452FF /* WaterView.swift */,
 				39FA788D29C55E93001452FF /* LineItemView.swift */,
 			);
 			path = Views;
@@ -300,11 +312,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */,
+				39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */,
 				39FA789729C93685001452FF /* AddHabit.swift in Sources */,
 				39FA789929CAA918001452FF /* WorkoutView.swift in Sources */,
+				39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */,
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
 				39FA789529C92E50001452FF /* ListViewModel.swift in Sources */,
 				39FA788C29C52382001452FF /* PageView.swift in Sources */,
+				39FA789D29CAB9E4001452FF /* AddPhotoView.swift in Sources */,
+				39FA78A129CC0624001452FF /* DrinkView.swift in Sources */,
 				395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */,
 				39FA788E29C55E93001452FF /* LineItemView.swift in Sources */,
 			);
@@ -468,6 +484,7 @@
 				DEVELOPMENT_TEAM = 2VD6PFGH3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = 75Hard;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -497,6 +514,7 @@
 				DEVELOPMENT_TEAM = 2VD6PFGH3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = 75Hard;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

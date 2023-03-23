@@ -10,7 +10,7 @@ import SwiftUI
 struct LineItemView: View {
     
     let item: ItemModel
-    @EnvironmentObject var listViewModel: ListViewModel;
+    @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         HStack{
@@ -30,22 +30,23 @@ struct LineItemView: View {
         .padding()
     }
     
-    func getDestination(pageType: ItemModel.PageType) -> any View {
+    @ViewBuilder
+    func getDestination(pageType: ItemModel.PageType) -> some View {
         switch pageType {
         case .water:
-            return PageView()
+            WaterView()
         case .reading:
-            return PageView()
+            PageView()
         case .workout:
-            return WorkoutView()
+            WorkoutView()
         case .outsideWorkout:
-            return WorkoutView()
+            WorkoutView()
         case .macros:
-            return PageView()
+            MacroView()
         case .photo:
-            return PageView()
+            AddPhotoView()
         case .drink:
-            return PageView()
+            DrinkView()
         }
     }
     
