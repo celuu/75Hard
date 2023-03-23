@@ -8,9 +8,44 @@
 import SwiftUI
 
 struct MacroView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    @State var proteinInput: String = ""
+    @State var carbInput: String = ""
+    @State var fatInput: String = ""
+    
+
+    var totalCalories: Int {
+        let protein = Int(proteinInput) ?? 0
+        let carbs = Int(carbInput) ?? 0
+        let fat = Int(fatInput) ?? 0
+        return (protein * 4) + (carbs * 4) + (fat * 9)
     }
+    
+    var body: some View {
+        HStack{
+            VStack{
+                Text("Protein")
+                TextField("Protein", text: $proteinInput)
+            }
+            VStack{
+                Text("Carbs")
+                TextField("Carbs", text: $carbInput)
+            }
+            
+            VStack{
+                Text("Fat")
+                TextField("Fat", text: $fatInput)
+            }
+            
+            VStack{
+                Text("Total Cals")
+                Text("\(totalCalories)")
+            }
+        }
+        
+    }
+    
+
 }
 
 struct MacroView_Previews: PreviewProvider {

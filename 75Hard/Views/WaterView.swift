@@ -10,7 +10,7 @@ import SwiftUI
 struct WaterView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var dailyWater: Int = 0;
-    @State var totalWater: Int = 120;
+    @State var totalWater: Int = 90;
     
     var body: some View {
         VStack {
@@ -19,7 +19,8 @@ struct WaterView: View {
             Circle()
                 .stroke(Color.blue, lineWidth: 10)
                 .frame(width: 300, height: 300)
-                .padding(70)
+                .padding(30)
+                Spacer()
             Button(action: add24oz,
                    label: {
                 Text("Add 24 oz")
