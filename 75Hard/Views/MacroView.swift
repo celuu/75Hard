@@ -22,26 +22,42 @@ struct MacroView: View {
     }
     
     var body: some View {
-        HStack{
-            VStack{
-                Text("Protein")
-                TextField("Protein", text: $proteinInput)
-            }
-            VStack{
-                Text("Carbs")
-                TextField("Carbs", text: $carbInput)
+        VStack{
+            Text("Target")
+            HStack{
+                Text("120g Protein")
             }
             
-            VStack{
-                Text("Fat")
-                TextField("Fat", text: $fatInput)
+            HStack{
+                VStack{
+                    Text("Protein")
+                    TextField("Protein", text: $proteinInput)
+                        .padding()
+                }
+                VStack{
+                    Text("Carbs")
+                    TextField("Carbs", text: $carbInput)
+                        .padding()
+                }
+                
+                VStack{
+                    Text("Fat")
+                    TextField("Fat", text: $fatInput)
+                        .padding()
+                }
+                
+                VStack{
+                    Text("Total Cals")
+                    Text("\(totalCalories)")
+                        .padding()
+                }
             }
+            .frame(width: 350, height: 300, alignment: .top)
             
-            VStack{
-                Text("Total Cals")
-                Text("\(totalCalories)")
-            }
         }
+        
+        
+
         
     }
     
