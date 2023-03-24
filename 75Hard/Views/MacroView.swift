@@ -24,9 +24,14 @@ struct MacroView: View {
     var body: some View {
         VStack{
             Text("Target")
+                .padding(1)
             HStack{
-                Text("120g Protein")
+                Text("P: 136g")
+                Text("C: 181g")
+                Text("F: 41g")
+                Text("Total: 1594")
             }
+            .padding()
             
             HStack{
                 VStack{
@@ -53,19 +58,19 @@ struct MacroView: View {
                 }
             }
             .frame(width: 350, height: 300, alignment: .top)
+            Spacer()
             
         }
-        
-        
-
-        
+        .navigationTitle("Macros")
     }
     
-
 }
 
 struct MacroView_Previews: PreviewProvider {
     static var previews: some View {
-        MacroView()
+        NavigationView{
+            MacroView()
+        }
     }
+        
 }
