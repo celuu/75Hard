@@ -11,6 +11,7 @@ import SwiftUI
 struct _5HardApp: App {
     
     @StateObject var listViewModel: ListViewModel = ListViewModel()
+    @StateObject private var dataController = DataController()
     
     
     var body: some Scene {
@@ -19,6 +20,7 @@ struct _5HardApp: App {
                 ContentView()
             }
             .environmentObject(listViewModel)
+            .environment(\.managedObjectContext, dataController.container.viewContext)
             
         }
     }

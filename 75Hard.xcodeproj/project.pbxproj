@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2224288C29D0CCC300EA5743 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2224288A29D0CCC300EA5743 /* Main.xcdatamodeld */; };
+		2224288E29D0CEA600EA5743 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224288D29D0CEA600EA5743 /* DataController.swift */; };
 		395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1929C5035D002CFB13 /* 75HardApp.swift */; };
 		395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1B29C5035D002CFB13 /* ContentView.swift */; };
 		395B5E1E29C5035E002CFB13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395B5E1D29C5035E002CFB13 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2224288B29D0CCC300EA5743 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
+		2224288D29D0CEA600EA5743 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = 75Hard/DataController.swift; sourceTree = SOURCE_ROOT; };
 		395B5E1629C5035D002CFB13 /* 75Hard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 75Hard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B5E1929C5035D002CFB13 /* 75HardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 75HardApp.swift; sourceTree = "<group>"; };
 		395B5E1B29C5035D002CFB13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				39FA789029C8F143001452FF /* Models */,
 				39FA788F29C8F136001452FF /* Views */,
 				395B5E1D29C5035E002CFB13 /* Assets.xcassets */,
+				2224288D29D0CEA600EA5743 /* DataController.swift */,
+				2224288A29D0CCC300EA5743 /* Main.xcdatamodeld */,
 				395B5E1F29C5035E002CFB13 /* Preview Content */,
 			);
 			path = 75Hard;
@@ -318,7 +324,9 @@
 				39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */,
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
 				39FA789529C92E50001452FF /* ListViewModel.swift in Sources */,
+				2224288E29D0CEA600EA5743 /* DataController.swift in Sources */,
 				39FA788C29C52382001452FF /* PageView.swift in Sources */,
+				2224288C29D0CCC300EA5743 /* Main.xcdatamodeld in Sources */,
 				39FA789D29CAB9E4001452FF /* AddPhotoView.swift in Sources */,
 				39FA78A129CC0624001452FF /* DrinkView.swift in Sources */,
 				395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */,
@@ -649,6 +657,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2224288A29D0CCC300EA5743 /* Main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2224288B29D0CCC300EA5743 /* Main.xcdatamodel */,
+			);
+			currentVersion = 2224288B29D0CCC300EA5743 /* Main.xcdatamodel */;
+			path = Main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 395B5E0E29C5035D002CFB13 /* Project object */;
 }
