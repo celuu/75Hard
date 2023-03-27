@@ -9,7 +9,9 @@ import Foundation
 
 class ListViewModel: ObservableObject {
     
-    @Published var items: [ItemModel] = [];
+    @Published var items: [ItemModel] = []
+
+    @Published var currentDayID = Date.now.localDayID
     
     init(){
         getItems()
@@ -45,5 +47,13 @@ class ListViewModel: ObservableObject {
         if let index = items.firstIndex(where: {$0.id == item.id}) {
             items[index] = item.updateCompletion()
         }
+    }
+
+    func moveCurrentDateForward() {
+        currentDayID = Date.fromDayID(currentDayID).adjusting(days: 1).dayID
+    }
+
+    func moveCurrentDateBackward() {
+        currentDayID = Date.fromDayID(currentDayID).adjusting(days: -1).dayID
     }
 }

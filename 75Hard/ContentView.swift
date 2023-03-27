@@ -10,24 +10,41 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var listViewModel: ListViewModel;
+    let dayOne = "2023-03-26"
     
     var body: some View {
             List {
                 ForEach(listViewModel.items) {
-                    item in LineItemView(item: item)
-
+                    item in LineItemView(item: item, dayID: listViewModel.currentDayID)
                 }
                 .onDelete(perform: listViewModel.deleteItem)
                 .onMove(perform: listViewModel.moveItem)
             }
             .listStyle(PlainListStyle())
-            .navigationTitle("75 Hard - Day BLANK")
+            .toolbar(content: {
+                ToolbarItem(placement: .principal) {
+                    VStack {
+                        Text("75 Hard - Day 1")
+                        Text(listViewModel.currentDayID)
+                    }
+                }
+            })
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
-                leading: EditButton(),
+              leading: Button(action: {
+                  listViewModel.moveCurrentDateBackward()
+              }, label: {
+                Image(systemName: "arrow.left")
+              }),
                 trailing:
-                    NavigationLink("Add", destination: AddHabitView() )
+                Button(action: {
+                    listViewModel.moveCurrentDateForward()
+                }, label: {
+                  Image(systemName: "arrow.right")
+                })
             )
+
+
 
     }
     

@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct WaterView: View {
+
+    init(dayID: String) {
+        self.dayID = dayID
+        _waterObjects = FetchRequest<Water>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+    }
+
     @Environment(\.presentationMode) var presentationMode
     @State var dailyWater: Int = 0;
     @State var totalWater: Int = 90;
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var waterObjects: FetchedResults<Water>
+    @FetchRequest var waterObjects: FetchedResults<Water>
 
+    let dayID: String
     
     var body: some View {
         VStack {
@@ -56,7 +63,7 @@ struct WaterView: View {
     func addNewWater(intakeOz: Int16){
         let newWater = Water(context: moc)
         newWater.id = UUID()
-        newWater.date = Date.now
+        newWater.dayID = dayID
         newWater.intake = intakeOz
         try? moc.save()
     }
@@ -65,7 +72,7 @@ struct WaterView: View {
 struct WaterView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            WaterView()
+            WaterView(dayID: Date.now.localDayID)
         }
     }
 }

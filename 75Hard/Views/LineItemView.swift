@@ -10,6 +10,7 @@ import SwiftUI
 struct LineItemView: View {
     
     let item: ItemModel
+    let dayID: String
     @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
@@ -34,7 +35,7 @@ struct LineItemView: View {
     func getDestination(pageType: ItemModel.PageType) -> some View {
         switch pageType {
         case .water:
-            WaterView()
+            WaterView(dayID: dayID)
         case .reading:
             PageView()
         case .workout:
@@ -58,7 +59,7 @@ struct LineItemView_Previews: PreviewProvider {
     static var item1 = ItemModel(title: "", isCompleted: false, pageType: .water)
     
     static var previews: some View {
-        LineItemView(item: item1)
+        LineItemView(item: item1, dayID: Date.now.localDayID)
     }
     
 }
