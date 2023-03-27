@@ -44,7 +44,7 @@ struct LineItemView: View {
         case .macros:
             MacroView()
         case .photo:
-            AddPhotoView()
+            CameraView()
         case .drink:
             DrinkView()
         }

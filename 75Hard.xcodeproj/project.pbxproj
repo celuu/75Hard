@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2224288C29D0CCC300EA5743 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2224288A29D0CCC300EA5743 /* Main.xcdatamodeld */; };
 		2224288E29D0CEA600EA5743 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224288D29D0CEA600EA5743 /* DataController.swift */; };
+		2224289029D0FF9F00EA5743 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224288F29D0FF9F00EA5743 /* CameraView.swift */; };
 		395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1929C5035D002CFB13 /* 75HardApp.swift */; };
 		395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1B29C5035D002CFB13 /* ContentView.swift */; };
 		395B5E1E29C5035E002CFB13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395B5E1D29C5035E002CFB13 /* Assets.xcassets */; };
@@ -23,7 +24,6 @@
 		39FA789729C93685001452FF /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789629C93685001452FF /* AddHabit.swift */; };
 		39FA789929CAA918001452FF /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789829CAA918001452FF /* WorkoutView.swift */; };
 		39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789A29CAB9C6001452FF /* MacroView.swift */; };
-		39FA789D29CAB9E4001452FF /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789C29CAB9E4001452FF /* AddPhotoView.swift */; };
 		39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789E29CAB9F9001452FF /* WaterView.swift */; };
 		39FA78A129CC0624001452FF /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA78A029CC0624001452FF /* DrinkView.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +48,7 @@
 /* Begin PBXFileReference section */
 		2224288B29D0CCC300EA5743 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		2224288D29D0CEA600EA5743 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = 75Hard/DataController.swift; sourceTree = SOURCE_ROOT; };
+		2224288F29D0FF9F00EA5743 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		395B5E1629C5035D002CFB13 /* 75Hard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 75Hard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B5E1929C5035D002CFB13 /* 75HardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 75HardApp.swift; sourceTree = "<group>"; };
 		395B5E1B29C5035D002CFB13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		39FA789629C93685001452FF /* AddHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabit.swift; sourceTree = "<group>"; };
 		39FA789829CAA918001452FF /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		39FA789A29CAB9C6001452FF /* MacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroView.swift; sourceTree = "<group>"; };
-		39FA789C29CAB9E4001452FF /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		39FA789E29CAB9F9001452FF /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		39FA78A029CC0624001452FF /* DrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,9 +164,9 @@
 				39FA789829CAA918001452FF /* WorkoutView.swift */,
 				39FA789A29CAB9C6001452FF /* MacroView.swift */,
 				39FA78A029CC0624001452FF /* DrinkView.swift */,
-				39FA789C29CAB9E4001452FF /* AddPhotoView.swift */,
 				39FA789E29CAB9F9001452FF /* WaterView.swift */,
 				39FA788D29C55E93001452FF /* LineItemView.swift */,
+				2224288F29D0FF9F00EA5743 /* CameraView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,6 +320,7 @@
 				39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */,
 				39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */,
 				39FA789729C93685001452FF /* AddHabit.swift in Sources */,
+				2224289029D0FF9F00EA5743 /* CameraView.swift in Sources */,
 				39FA789929CAA918001452FF /* WorkoutView.swift in Sources */,
 				39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */,
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
@@ -327,7 +328,6 @@
 				2224288E29D0CEA600EA5743 /* DataController.swift in Sources */,
 				39FA788C29C52382001452FF /* PageView.swift in Sources */,
 				2224288C29D0CCC300EA5743 /* Main.xcdatamodeld in Sources */,
-				39FA789D29CAB9E4001452FF /* AddPhotoView.swift in Sources */,
 				39FA78A129CC0624001452FF /* DrinkView.swift in Sources */,
 				395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */,
 				39FA788E29C55E93001452FF /* LineItemView.swift in Sources */,

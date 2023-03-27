@@ -10,6 +10,8 @@ import SwiftUI
 struct PageView: View {
     
     @State var userInput: String = ""
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var nuggetObjects: FetchedResults<Read>
     
     var body: some View {
         ScrollView {
@@ -20,7 +22,7 @@ struct PageView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                 Button(action: {
-                    
+                    saveNugget(userInput: userInput)
                 }, label: {
                     Text("Save")
                         .foregroundColor(.white)
@@ -31,10 +33,23 @@ struct PageView: View {
                 }
                 )
             }
+
             
         }
+
         .navigationTitle("Nugget from reading")
         .padding()
+    }
+
+    func saveNugget(userInput:String){
+        let newNugget = Read(context: moc)
+        newNugget.id = UUID()
+        newNugget.nugget = userInput
+        do {
+            try moc.save()
+        } catch {
+            print(error)
+        }
     }
 }
 

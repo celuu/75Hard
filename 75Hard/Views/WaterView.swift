@@ -56,7 +56,7 @@ struct WaterView: View {
     func addNewWater(intakeOz: Int16){
         let newWater = Water(context: moc)
         newWater.id = UUID()
-        newWater.date = "today"
+        newWater.date = Date.now
         newWater.intake = intakeOz
         try? moc.save()
     }
