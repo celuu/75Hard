@@ -12,6 +12,9 @@ struct MacroView: View {
     @State var proteinInput: String = ""
     @State var carbInput: String = ""
     @State var fatInput: String = ""
+    var proteinTarget: Int = 136
+    var carbTarget: Int = 181
+    var fatTarget: Int = 41
     
 
     var totalCalories: Int {
@@ -26,10 +29,15 @@ struct MacroView: View {
             Text("Target")
                 .padding(1)
             HStack{
-                Text("P: 136g")
-                Text("C: 181g")
-                Text("F: 41g")
+                Spacer()
+                Text("P: \(proteinTarget)g")
+                Spacer()
+                Text("C: \(carbTarget)g")
+                Spacer()
+                Text("F: \(fatTarget)g")
+                Spacer()
                 Text("Total: 1594")
+                Spacer()
             }
             .padding()
             
@@ -56,6 +64,10 @@ struct MacroView: View {
                     Text("\(totalCalories)")
                         .padding()
                 }
+
+                
+
+
             }
             .frame(width: 350, height: 300, alignment: .top)
             Spacer()
@@ -63,7 +75,21 @@ struct MacroView: View {
         }
         .navigationTitle("Macros")
     }
-    
+
+    func checkMacros(proteinInput, carbInput, fatInput){
+        var isGood:Bool = false
+        let intProtein: Int = Int(proteinInput) ?? 0
+        let intCarb: Int = Int(carbInput) ?? 0
+        let intFat: Int = Int(fatInput) ?? 0
+        if intProtein > proteinTarget - 5 && intProtein < protein + 5 {
+            isGood = true
+        }
+    }
+
+
+
+
+
 }
 
 struct MacroView_Previews: PreviewProvider {
