@@ -39,9 +39,9 @@ struct LineItemView: View {
         case .reading:
             PageView()
         case .workout:
-            WorkoutView()
+            WorkoutView(dayID: dayID)
         case .outsideWorkout:
-            WorkoutView()
+            WorkoutView(dayID: dayID)
         case .macros:
             MacroView()
         case .photo:

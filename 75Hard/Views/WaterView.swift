@@ -30,7 +30,6 @@ struct WaterView: View {
                 .stroke(Color.blue, lineWidth: 10)
                 .frame(width: 300, height: 300)
                 .padding(30)
-            Spacer()
             Button(action: {
                 addNewWater(intakeOz: 24)
             },
@@ -55,6 +54,10 @@ struct WaterView: View {
                     .cornerRadius(40)
             }
             )
+            List(waterObjects) { water in
+                Text("\(water.intake)oz")
+            }
+            .listStyle(PlainListStyle())
         }
         .padding()
         .navigationTitle("Water Intake")

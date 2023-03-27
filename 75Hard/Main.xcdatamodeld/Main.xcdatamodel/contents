@@ -9,4 +9,10 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="intake" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Workout" representedClassName="Workout" syncable="YES" codeGenerationType="class">
+        <attribute name="activity" optional="YES" attributeType="String"/>
+        <attribute name="dayID" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isOutdoor" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
 </model>

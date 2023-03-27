@@ -65,7 +65,7 @@ struct MacroView: View {
                         .padding()
                 }
 
-                
+
 
 
             }
@@ -76,15 +76,15 @@ struct MacroView: View {
         .navigationTitle("Macros")
     }
 
-    func checkMacros(proteinInput, carbInput, fatInput){
-        var isGood:Bool = false
-        let intProtein: Int = Int(proteinInput) ?? 0
-        let intCarb: Int = Int(carbInput) ?? 0
-        let intFat: Int = Int(fatInput) ?? 0
-        if intProtein > proteinTarget - 5 && intProtein < protein + 5 {
-            isGood = true
-        }
-    }
+//    func checkMacros(proteinInput, carbInput, fatInput){
+//        var isGood:Bool = false
+//        let intProtein: Int = Int(proteinInput) ?? 0
+//        let intCarb: Int = Int(carbInput) ?? 0
+//        let intFat: Int = Int(fatInput) ?? 0
+//        if intProtein > proteinTarget - 5 && intProtein < protein + 5 {
+//            isGood = true
+//        }
+//    }
 
 
 

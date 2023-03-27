@@ -31,16 +31,16 @@ struct CameraView: View {
                 guard let item = selectedItems.first else {
                     return
                 }
-                item.loadTransferable(type: Data.self){ result in
-                    switch result{
+                item.loadTransferable(type: Data.self) { result in
+                    switch result {
                     case .success(let data):
                         if let data = data {
                             self.data = data
                         } else {
                             print("Data is nil")
                         }
-                    case .failure(let failure):
-                        fatalError("it didnt work")
+                    case .failure(let errot):
+                        fatalError("it didnt work \(error)")
                     }
                 }
             }

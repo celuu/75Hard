@@ -14,27 +14,38 @@ struct WorkoutView: View {
     @EnvironmentObject var listViewModel: ListViewModel
     @State var alertTitle:String = ""
     @State var showAlert:Bool = false
+    let dayID: String
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var workoutObjects: FetchedResults<Workout>
+
+
+    init(dayID: String) {
+        self.dayID = dayID
+        _workoutObjects = FetchRequest<Workout>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+    }
     
     var body: some View {
-        ScrollView {
-            VStack{
-                TextField("Type workout...", text: $userInput)
+        VStack{
+            TextField("Type workout...", text: $userInput)
+                .frame(height: 55)
+                .padding(.horizontal)
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
+            Button(action: saveButtonPressed,
+                   label: {
+                Text("Save")
+                    .foregroundColor(.white)
                     .frame(height: 55)
-                    .padding(.horizontal)
-                    .background(Color.gray.opacity(0.2))
+                    .frame(maxWidth: .infinity)
+                    .background(Color.accentColor)
                     .cornerRadius(10)
-                Button(action: saveButtonPressed,
-                       label: {
-                    Text("Save")
-                        .foregroundColor(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                }
-                )
             }
-            
+            )
+            List(workoutObjects) { workout in
+                Text(workout.activity ?? "Unknown")
+            }
+            .listStyle(PlainListStyle())
+
         }
         .navigationTitle("What workout did you do")
         .alert(isPresented: $showAlert, content: getAlert)
@@ -46,6 +57,16 @@ struct WorkoutView: View {
             listViewModel.addItem(title: userInput)
             presentationMode.wrappedValue.dismiss()
         }
+        saveWorkout()
+    }
+
+    func saveWorkout(){
+        let newWorkout = Workout(context: moc)
+        newWorkout.id = UUID()
+        newWorkout.dayID = dayID
+        newWorkout.isOutdoor = false
+        newWorkout.activity = userInput
+        try? moc.save()
     }
     
     func textIsGood() -> Bool{
@@ -65,9 +86,8 @@ struct WorkoutView: View {
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WorkoutView()
+            WorkoutView(dayID: Date.now.localDayID)
         }
-        .environmentObject(ListViewModel())
         
     }
 }
