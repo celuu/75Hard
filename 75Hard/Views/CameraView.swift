@@ -39,7 +39,7 @@ struct CameraView: View {
                         } else {
                             print("Data is nil")
                         }
-                    case .failure(let errot):
+                    case .failure(let error):
                         fatalError("it didnt work \(error)")
                     }
                 }
