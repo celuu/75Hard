@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MacroView: View {
     
-    @State var proteinInput: String = ""
-    @State var carbInput: String = ""
-    @State var fatInput: String = ""
+    @State var proteinInput: Int16 = 0
+    @State var carbInput: Int16 = 0
+    @State var fatInput: Int16 = 0
     var proteinTarget: Int = 136
     var carbTarget: Int = 181
     var fatTarget: Int = 41
@@ -19,26 +19,31 @@ struct MacroView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var macroObjects: FetchedResults<Macro>
 
+    init(dayID: String) {
+        self.dayID = dayID
+        _macroObjects = FetchRequest<Macro>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+    }
+
     var isProteinGood: Bool {
-        let intProtein: Int = Int(proteinInput) ?? 0
+        let intProtein: Int = Int(proteinInput)
         return abs(intProtein - proteinTarget) <= 5
     }
 
     var isCarbGood: Bool {
-        let intCarb: Int = Int(carbInput) ?? 0
+        let intCarb: Int = Int(carbInput)
         return abs(intCarb - carbTarget) <= 5
     }
 
     var isFatGood: Bool {
-        let intFat: Int = Int(fatInput) ?? 0
+        let intFat: Int = Int(fatInput)
         return abs(intFat - fatTarget) <= 5
     }
     
 
     var totalCalories: Int {
-        let protein = Int(proteinInput) ?? 0
-        let carbs = Int(carbInput) ?? 0
-        let fat = Int(fatInput) ?? 0
+        let protein = Int(proteinInput)
+        let carbs = Int(carbInput)
+        let fat = Int(fatInput)
         return (protein * 4) + (carbs * 4) + (fat * 9)
     }
     
@@ -62,20 +67,20 @@ struct MacroView: View {
             HStack{
                 VStack{
                     Text("Protein")
-                    TextField("Protein", text: $proteinInput)
+                    TextField("Protein", value: $proteinInput, formatter: NumberFormatter())
                         .padding()
                     Image(systemName: isProteinGood ? "checkmark.circle" : "x.circle")
                 }
                 VStack{
                     Text("Carbs")
-                    TextField("Carbs", text: $carbInput)
+                    TextField("Carbs", value: $carbInput, formatter: NumberFormatter())
                         .padding()
                     Image(systemName: isCarbGood ? "checkmark.circle" : "x.circle")
                 }
                 
                 VStack{
                     Text("Fat")
-                    TextField("Fat", text: $fatInput)
+                    TextField("Fat", value: $fatInput, formatter: NumberFormatter())
                         .padding()
                     Image(systemName: isFatGood ? "checkmark.circle" : "x.circle")
                 }
@@ -84,11 +89,44 @@ struct MacroView: View {
                     Text("Total Cals")
                     Text("\(totalCalories)")
                         .padding()
-                }
 
+                }
             }
             .frame(width: 350, height: 300, alignment: .top)
-            Spacer()
+
+            VStack{
+                if fatInput != 0 && carbInput != 0 && proteinInput != 0 {
+                    Button(action: saveMacros,
+                           label: {
+                        Text("Save")
+                            .foregroundColor(.white)
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                    }
+                    ).disabled(false)
+
+                } else {
+                    Button(action: saveMacros,
+                           label: {
+                        Text("Save")
+                            .foregroundColor(.white)
+                            .frame(height: 55)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                    }
+                    ).disabled(true)
+
+                }
+
+                List(macroObjects) { macro in
+                    Text("\(macro.fat)")
+                }
+                .listStyle(PlainListStyle())
+
+            }
 
             
         }
@@ -96,7 +134,13 @@ struct MacroView: View {
     }
 
     func saveMacros(){
-        
+        let newMacros = Macro(context: moc)
+        newMacros.id = UUID()
+        newMacros.dayID = dayID
+        newMacros.fat = fatInput
+        newMacros.protein = proteinInput
+        newMacros.carbs = carbInput
+        try? moc.save()
     }
 
 
