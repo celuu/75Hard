@@ -72,6 +72,7 @@
 		39FA789A29CAB9C6001452FF /* MacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroView.swift; sourceTree = "<group>"; };
 		39FA789E29CAB9F9001452FF /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		39FA78A029CC0624001452FF /* DrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
+		39FA78A529D3A2E5001452FF /* -5Hard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-5Hard-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +123,7 @@
 		395B5E1829C5035D002CFB13 /* 75Hard */ = {
 			isa = PBXGroup;
 			children = (
+				39FA78A529D3A2E5001452FF /* -5Hard-Info.plist */,
 				395B5E1929C5035D002CFB13 /* 75HardApp.swift */,
 				395B5E1B29C5035D002CFB13 /* ContentView.swift */,
 				39FA789329C92E27001452FF /* ViewModels */,
@@ -497,10 +499,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"75Hard/Preview Content\"";
-				DEVELOPMENT_TEAM = B59D4UJC5W;
+				DEVELOPMENT_TEAM = 2VD6PFGH3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-5Hard-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = 75Hard;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera persmission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -527,10 +531,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"75Hard/Preview Content\"";
-				DEVELOPMENT_TEAM = B59D4UJC5W;
+				DEVELOPMENT_TEAM = 2VD6PFGH3M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "-5Hard-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = 75Hard;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera persmission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
