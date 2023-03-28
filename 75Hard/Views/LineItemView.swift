@@ -52,7 +52,7 @@ struct LineItemView: View {
         case .macros:
             MacroView(dayID: dayID)
         case .photo:
-            CameraView()
+            PhotoView()
         case .drink:
             DrinkView(dayID: dayID)
         }
