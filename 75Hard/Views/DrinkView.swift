@@ -47,7 +47,7 @@ struct DrinkView: View {
         let newCheck = Drink(context: moc)
         newCheck.id = UUID()
         newCheck.dayID = dayID
-        newCheck.isChecked = true
+        newCheck.isChecked = isOn
         try? moc.save()
     }
 }

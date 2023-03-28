@@ -15,9 +15,16 @@ struct LineItemView: View {
     
     var body: some View {
         HStack{
-            NavigationLink(destination: getDestination(pageType: item.pageType), label:{
-                Text (item.title)
-            })
+            if item.pageType != .drink {
+                NavigationLink(destination: getDestination(pageType: item.pageType), label:{
+                    Text (item.title)
+                })
+            } else {
+                Text(item.title)
+                Spacer()
+            }
+
+
             Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
                 .foregroundColor(item.isCompleted ? .green : .red)
                 .onTapGesture {
