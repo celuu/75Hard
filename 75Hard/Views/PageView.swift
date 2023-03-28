@@ -12,9 +12,15 @@ struct PageView: View {
     @State var userInput: String = ""
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var nuggetObjects: FetchedResults<Read>
+
+    let dayID: String
+
+    init(dayID: String) {
+        self.dayID = dayID
+        _nuggetObjects = FetchRequest<Read>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+    }
     
     var body: some View {
-        ScrollView {
             VStack{
                 TextField("Type insight!", text: $userInput)
                     .frame(height: 55)
@@ -32,10 +38,12 @@ struct PageView: View {
                         .cornerRadius(10)
                 }
                 )
+                List(nuggetObjects) { nugget in
+                    Text(nugget.nugget ?? "Unknown")
+                }
+                .listStyle(PlainListStyle())
             }
 
-            
-        }
 
         .navigationTitle("Nugget from reading")
         .padding()
@@ -45,18 +53,15 @@ struct PageView: View {
         let newNugget = Read(context: moc)
         newNugget.id = UUID()
         newNugget.nugget = userInput
-        do {
-            try moc.save()
-        } catch {
-            print(error)
-        }
+        newNugget.dayID = dayID
+        try? moc.save()
     }
 }
 
 struct Water_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PageView()
+            PageView(dayID: Date.now.localDayID)
         }
     }
 }

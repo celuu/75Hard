@@ -15,13 +15,15 @@ struct WorkoutView: View {
     @State var alertTitle:String = ""
     @State var showAlert:Bool = false
     let dayID: String
+    let isOutdoor: Bool
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var workoutObjects: FetchedResults<Workout>
 
 
-    init(dayID: String) {
+    init(dayID: String, isOutdoor: Bool) {
         self.dayID = dayID
-        _workoutObjects = FetchRequest<Workout>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        self.isOutdoor = isOutdoor
+        _workoutObjects = FetchRequest<Workout>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@ AND isOutdoor == %@", dayID, NSNumber(value: isOutdoor)), animation: nil)
     }
     
     var body: some View {
@@ -64,7 +66,7 @@ struct WorkoutView: View {
         let newWorkout = Workout(context: moc)
         newWorkout.id = UUID()
         newWorkout.dayID = dayID
-        newWorkout.isOutdoor = false
+        newWorkout.isOutdoor = isOutdoor
         newWorkout.activity = userInput
         try? moc.save()
     }
@@ -86,7 +88,7 @@ struct WorkoutView: View {
 struct WorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WorkoutView(dayID: Date.now.localDayID)
+            WorkoutView(dayID: Date.now.localDayID, isOutdoor: true)
         }
         
     }

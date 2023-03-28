@@ -37,11 +37,11 @@ struct LineItemView: View {
         case .water:
             WaterView(dayID: dayID)
         case .reading:
-            PageView()
+            PageView(dayID: dayID)
         case .workout:
-            WorkoutView(dayID: dayID)
+            WorkoutView(dayID: dayID, isOutdoor: false)
         case .outsideWorkout:
-            WorkoutView(dayID: dayID)
+            WorkoutView(dayID: dayID, isOutdoor: true)
         case .macros:
             MacroView(dayID: dayID)
         case .photo:
