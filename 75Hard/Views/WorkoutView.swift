@@ -49,14 +49,13 @@ struct WorkoutView: View {
             .listStyle(PlainListStyle())
 
         }
-        .navigationTitle("What workout did you do")
+        .navigationTitle("What \(isOutdoor ? "outdoor" : "indoor") workout did you do")
         .alert(isPresented: $showAlert, content: getAlert)
         .padding()
     }
     
     func saveButtonPressed(){
         if textIsGood(){
-            listViewModel.addItem(title: userInput)
             presentationMode.wrappedValue.dismiss()
         }
         saveWorkout()

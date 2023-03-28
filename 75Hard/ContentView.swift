@@ -14,8 +14,8 @@ struct ContentView: View {
     
     var body: some View {
             List {
-                ForEach(listViewModel.items) {
-                    item in LineItemView(item: item, dayID: listViewModel.currentDayID)
+                ForEach(listViewModel.items) { item in
+                    LineItemView(item: item, dayID: listViewModel.currentDayID)
                 }
                 .onDelete(perform: listViewModel.deleteItem)
                 .onMove(perform: listViewModel.moveItem)
