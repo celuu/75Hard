@@ -11,10 +11,10 @@ import PhotosUI
 struct CameraView: View {
 
     @State var selectedItems: [PhotosPickerItem] = []
-    @State var data:Data?
+    @State var data: Data?
 
     var body: some View {
-        VStack{
+        VStack {
             if let data = data, let uiimage = UIImage(data: data){
                 Image(uiImage: uiimage)
                     .resizable()

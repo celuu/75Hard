@@ -28,7 +28,7 @@ struct PageView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                 Button(action: {
-                    saveNugget(userInput: userInput)
+                    saveButtonTapped()
                 }, label: {
                     Text("Save")
                         .foregroundColor(.white)
@@ -49,7 +49,14 @@ struct PageView: View {
         .padding()
     }
 
-    func saveNugget(userInput:String){
+    func saveButtonTapped() {
+        saveNugget(userInput: userInput)
+        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+        impactMed.impactOccurred()
+        userInput = ""
+    }
+
+    func saveNugget(userInput: String){
         let newNugget = Read(context: moc)
         newNugget.id = UUID()
         newNugget.nugget = userInput

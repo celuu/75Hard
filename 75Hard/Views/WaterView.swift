@@ -63,7 +63,10 @@ struct WaterView: View {
         .navigationTitle("Water Intake")
     }
     
-    func addNewWater(intakeOz: Int16){
+    func addNewWater(intakeOz: Int16) {
+        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+        impactMed.impactOccurred()
+        
         let newWater = Water(context: moc)
         newWater.id = UUID()
         newWater.dayID = dayID

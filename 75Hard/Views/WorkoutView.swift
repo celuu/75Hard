@@ -33,7 +33,7 @@ struct WorkoutView: View {
                 .padding(.horizontal)
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
-            Button(action: saveButtonPressed,
+            Button(action: saveButtonTapped,
                    label: {
                 Text("Save")
                     .foregroundColor(.white)
@@ -53,12 +53,15 @@ struct WorkoutView: View {
         .alert(isPresented: $showAlert, content: getAlert)
         .padding()
     }
-    
-    func saveButtonPressed(){
-        if textIsGood(){
-            presentationMode.wrappedValue.dismiss()
+
+    func saveButtonTapped() {
+        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+        impactMed.impactOccurred()
+
+        if textIsGood() {
+            saveWorkout()
+            userInput = ""
         }
-        saveWorkout()
     }
 
     func saveWorkout(){
@@ -70,7 +73,7 @@ struct WorkoutView: View {
         try? moc.save()
     }
     
-    func textIsGood() -> Bool{
+    func textIsGood() -> Bool {
         if(userInput.count < 3){
             alertTitle = "Item must be at least 3 characters long"
             showAlert.toggle()

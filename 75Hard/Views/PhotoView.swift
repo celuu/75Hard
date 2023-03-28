@@ -22,6 +22,8 @@ struct PhotoView: View {
             }
 
             Button("Take Photo") {
+                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                impactMed.impactOccurred()
                 isShowingImagePicker = true
             }
             .sheet(isPresented: $isShowingImagePicker) {

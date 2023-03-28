@@ -108,7 +108,7 @@ struct MacroView: View {
                     ).disabled(false)
 
                 } else {
-                    Button(action: saveMacros,
+                    Button(action: saveButtonTapped,
                            label: {
                         Text("Save")
                             .foregroundColor(.white)
@@ -131,6 +131,13 @@ struct MacroView: View {
             
         }
         .navigationTitle("Macros")
+    }
+
+    func saveButtonTapped() {
+        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+        impactMed.impactOccurred()
+
+        saveMacros()
     }
 
     func saveMacros(){
