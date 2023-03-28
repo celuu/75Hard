@@ -47,7 +47,7 @@ struct LineItemView: View {
         case .photo:
             CameraView()
         case .drink:
-            DrinkView()
+            DrinkView(dayID: dayID)
         }
     }
     
