@@ -10,19 +10,24 @@ import PhotosUI
 
 struct PhotoView: View {
     @State private var isShowingImagePicker = false
-    @State private var selectedImage: UIImage?
     @State var selectedItems: [PhotosPickerItem] = []
-    @State var data: Data?
     
     let dayID: String
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var imageObjects: FetchedResults<Photo>
+    @FetchRequest(sortDescriptors: []) var photoObjects: FetchedResults<Photo>
+    
+    init(dayID: String) {
+        self.dayID = dayID
+        _photoObjects = FetchRequest<Photo>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+    }
 
 
     var body: some View {
         
         VStack {
-            if let data = data, let uiimage = UIImage(data: data){
+            if let firstPhotoObject = photoObjects.first,
+               let data = firstPhotoObject.data,
+               let uiimage = UIImage(data: data) {
                 Image(uiImage: uiimage)
                     .resizable()
                 
@@ -42,7 +47,7 @@ struct PhotoView: View {
                     switch result {
                     case .success(let data):
                         if let data = data {
-                            self.data = data
+                            saveImage(data: data)
                         } else {
                             print("Data is nil")
                         }
@@ -54,33 +59,23 @@ struct PhotoView: View {
         }
         .frame(width: 500, height: 500)
         
-        
-        
         VStack {
-            if let image = selectedImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-            } else {
-                Text("No image selected")
-            }
-
             Button("Take Photo") {
                 let impactMed = UIImpactFeedbackGenerator(style: .medium)
                 impactMed.impactOccurred()
                 isShowingImagePicker = true
             }
             .sheet(isPresented: $isShowingImagePicker) {
-                ImagePicker(selectedImage: $selectedImage)
+                ImagePicker(saveImage: saveImage)
             }
         }
     }
     
-    func saveImage(){
+    func saveImage(data: Data) {
         let newImage = Photo(context: moc)
         newImage.id = UUID()
         newImage.dayID = dayID
-        newImage.data = UIImage.jpegData(compressionQuality: 1)
+        newImage.data = data
         try? moc.save()
     }
     
@@ -89,7 +84,7 @@ struct PhotoView: View {
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var selectedImage: UIImage?
+    let saveImage: ((Data) -> Void)
 
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         let parent: ImagePicker
@@ -100,8 +95,11 @@ struct ImagePicker: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[.originalImage] as? UIImage {
-                parent.selectedImage = image
+                if let data = image.jpegData(compressionQuality: 1) {
+                    parent.saveImage(data)
+                }
             }
+            
 
             parent.presentationMode.wrappedValue.dismiss()
         }
