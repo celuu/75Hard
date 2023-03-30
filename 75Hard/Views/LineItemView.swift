@@ -22,6 +22,7 @@ struct LineItemView: View {
             } else {
                 Text(item.title)
                 Spacer()
+                Spacer()
             }
 
 
