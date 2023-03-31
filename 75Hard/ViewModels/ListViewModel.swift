@@ -56,4 +56,10 @@ class ListViewModel: ObservableObject {
     func moveCurrentDateBackward() {
         currentDayID = Date.fromDayID(currentDayID).adjusting(days: -1).dayID
     }
+    
+    func fetchOrCreateSummary() {
+        // query with the new day ID
+        // check for exactly 1 summary object being returned
+        // if there is not a summary, create a new one with the day ID
+    }
 }

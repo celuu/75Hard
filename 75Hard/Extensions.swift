@@ -5,7 +5,21 @@
 //  Created by Jacob Rice on 3/26/23.
 //
 
+import CoreData
 import Foundation
+import SwiftUI
+
+extension NSManagedObjectContext {
+    
+    func deleteAndSave(from fetchedResults: FetchedResults<NSManagedObject>, at offsets: IndexSet) {
+        for offset in offsets   {
+            let object = fetchedResults[offset]
+            delete(object)
+        }
+        
+        try? save()
+    }
+}
 
 extension Date {
 

@@ -43,8 +43,11 @@ struct WorkoutView: View {
                     .cornerRadius(10)
             }
             )
-            List(workoutObjects) { workout in
-                Text(workout.activity ?? "Unknown")
+            List {
+                ForEach(workoutObjects) { workout in
+                    Text(workout.activity ?? "Unknown")
+                }
+                    .onDelete(perform: deleteItem)
             }
             .listStyle(PlainListStyle())
 
@@ -85,6 +88,16 @@ struct WorkoutView: View {
     func getAlert() -> Alert {
         return Alert(title: Text(alertTitle))
     }
+    
+    func deleteItem(at offsets: IndexSet){
+        for offset in offsets {
+            let workout = workoutObjects[offset]
+            moc.delete(workout)
+        }
+        try? moc.save()
+    }
+    
+    
 }
 
 struct WorkoutView_Previews: PreviewProvider {

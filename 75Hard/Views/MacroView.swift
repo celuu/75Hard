@@ -121,8 +121,12 @@ struct MacroView: View {
 
                 }
 
-                List(macroObjects) { macro in
-                    Text("\(macro.fat)")
+                List {
+                    ForEach(macroObjects) { macro in
+                        Text("\(macro.fat)")
+                    }
+                    .onDelete(perform: deleteItem)
+                   
                 }
                 .listStyle(PlainListStyle())
 
@@ -147,6 +151,14 @@ struct MacroView: View {
         newMacros.fat = fatInput
         newMacros.protein = proteinInput
         newMacros.carbs = carbInput
+        try? moc.save()
+    }
+    
+    func deleteItem(at offsets: IndexSet){
+        for offset in offsets {
+            let macro = macroObjects[offset]
+            moc.delete(macro)
+        }
         try? moc.save()
     }
 

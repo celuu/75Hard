@@ -11,6 +11,7 @@
 		2224288E29D0CEA600EA5743 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224288D29D0CEA600EA5743 /* DataController.swift */; };
 		2224289229D29F3600EA5743 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224289129D29F3600EA5743 /* PhotoView.swift */; };
 		2244F58129D141D400C27BA2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244F58029D141D400C27BA2 /* Extensions.swift */; };
+		3935298A29D7977A00EF2DDF /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935298929D7977A00EF2DDF /* DrinkView.swift */; };
 		395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1929C5035D002CFB13 /* 75HardApp.swift */; };
 		395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E1B29C5035D002CFB13 /* ContentView.swift */; };
 		395B5E1E29C5035E002CFB13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 395B5E1D29C5035E002CFB13 /* Assets.xcassets */; };
@@ -26,7 +27,6 @@
 		39FA789929CAA918001452FF /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789829CAA918001452FF /* WorkoutView.swift */; };
 		39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789A29CAB9C6001452FF /* MacroView.swift */; };
 		39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789E29CAB9F9001452FF /* WaterView.swift */; };
-		39FA78A129CC0624001452FF /* DrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA78A029CC0624001452FF /* DrinkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +51,7 @@
 		2224288D29D0CEA600EA5743 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = 75Hard/DataController.swift; sourceTree = SOURCE_ROOT; };
 		2224289129D29F3600EA5743 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		2244F58029D141D400C27BA2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3935298929D7977A00EF2DDF /* DrinkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
 		395B5E1629C5035D002CFB13 /* 75Hard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 75Hard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		395B5E1929C5035D002CFB13 /* 75HardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 75HardApp.swift; sourceTree = "<group>"; };
 		395B5E1B29C5035D002CFB13 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		39FA789829CAA918001452FF /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		39FA789A29CAB9C6001452FF /* MacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroView.swift; sourceTree = "<group>"; };
 		39FA789E29CAB9F9001452FF /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
-		39FA78A029CC0624001452FF /* DrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkView.swift; sourceTree = "<group>"; };
 		39FA78A529D3A2E5001452FF /* -5Hard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-5Hard-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -168,9 +168,9 @@
 				39FA789629C93685001452FF /* AddHabit.swift */,
 				39FA789829CAA918001452FF /* WorkoutView.swift */,
 				39FA789A29CAB9C6001452FF /* MacroView.swift */,
-				39FA78A029CC0624001452FF /* DrinkView.swift */,
 				39FA789E29CAB9F9001452FF /* WaterView.swift */,
 				39FA788D29C55E93001452FF /* LineItemView.swift */,
+				3935298929D7977A00EF2DDF /* DrinkView.swift */,
 				2224289129D29F3600EA5743 /* PhotoView.swift */,
 			);
 			path = Views;
@@ -325,6 +325,7 @@
 				39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */,
 				39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */,
 				39FA789729C93685001452FF /* AddHabit.swift in Sources */,
+				3935298A29D7977A00EF2DDF /* DrinkView.swift in Sources */,
 				39FA789929CAA918001452FF /* WorkoutView.swift in Sources */,
 				39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */,
 				395B5E1C29C5035D002CFB13 /* ContentView.swift in Sources */,
@@ -333,7 +334,6 @@
 				39FA788C29C52382001452FF /* PageView.swift in Sources */,
 				2244F58129D141D400C27BA2 /* Extensions.swift in Sources */,
 				2224288C29D0CCC300EA5743 /* Main.xcdatamodeld in Sources */,
-				39FA78A129CC0624001452FF /* DrinkView.swift in Sources */,
 				395B5E1A29C5035D002CFB13 /* 75HardApp.swift in Sources */,
 				39FA788E29C55E93001452FF /* LineItemView.swift in Sources */,
 				2224289229D29F3600EA5743 /* PhotoView.swift in Sources */,

@@ -5,6 +5,7 @@
 //  Created by Christine Luu on 3/21/23.
 //
 
+import CoreData
 import SwiftUI
 
 struct WaterView: View {
@@ -54,9 +55,14 @@ struct WaterView: View {
                     .cornerRadius(40)
             }
             )
-            List(waterObjects) { water in
-                Text("\(water.intake)oz")
+            List {
+                ForEach(waterObjects) { water in
+                    Text("\(water.intake)oz")
+                }
+                .onDelete(perform: deleteItem)
+                    
             }
+            
             .listStyle(PlainListStyle())
         }
         .padding()
@@ -73,6 +79,15 @@ struct WaterView: View {
         newWater.intake = intakeOz
         try? moc.save()
     }
+    
+    func deleteItem(at offsets: IndexSet){
+        for offset in offsets {
+            let water = waterObjects[offset]
+            moc.delete(water)
+        }
+        try? moc.save()
+    }
+    
 }
 
 struct WaterView_Previews: PreviewProvider {

@@ -38,8 +38,11 @@ struct PageView: View {
                         .cornerRadius(10)
                 }
                 )
-                List(nuggetObjects) { nugget in
-                    Text(nugget.nugget ?? "Unknown")
+                List {
+                    ForEach(nuggetObjects) { nugget in
+                        Text(nugget.nugget ?? "Unknown")
+                    }
+                    .onDelete(perform: deleteItem)
                 }
                 .listStyle(PlainListStyle())
             }
@@ -61,6 +64,14 @@ struct PageView: View {
         newNugget.id = UUID()
         newNugget.nugget = userInput
         newNugget.dayID = dayID
+        try? moc.save()
+    }
+    
+    func deleteItem(at offsets: IndexSet){
+        for offset in offsets {
+            let nugget = nuggetObjects[offset]
+            moc.delete(nugget)
+        }
         try? moc.save()
     }
 }

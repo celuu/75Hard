@@ -3,13 +3,10 @@
     <entity name="DailySummary" representedClassName="DailySummary" syncable="YES" codeGenerationType="class">
         <attribute name="dayID" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="isDrinkGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isMacroGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isPhotoGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isReadGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isWaterGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isWorkoutInsideGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isWorkoutOutsideGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Drink" representedClassName="Drink" syncable="YES" codeGenerationType="class">
         <attribute name="dayID" optional="YES" attributeType="String"/>
