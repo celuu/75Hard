@@ -12,27 +12,50 @@ struct WaterView: View {
 
     init(dayID: String) {
         self.dayID = dayID
-        _waterObjects = FetchRequest<Water>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        _waterObjects = FetchRequest<Water>(sortDescriptors: [
+            SortDescriptor(\.createdAt, order: .reverse)
+        ], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
     }
 
     @Environment(\.presentationMode) var presentationMode
-    @State var dailyWater: Int = 0;
-    @State var totalWater: Int = 90;
     @Environment(\.managedObjectContext) var moc
     @FetchRequest var waterObjects: FetchedResults<Water>
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
+    let targetOz: Double = 128.0
+    var currentOz: Int {
+        return waterObjects.map {Int($0.intake)}.reduce(0, +)
+    }
 
     let dayID: String
     
     var body: some View {
+
         VStack {
-            Text("Total oz of water: \(waterObjects.map {$0.intake}.reduce(0, +)) oz")
+            Text("Total oz of water: \(currentOz) oz")
                 .padding(1)
-            Circle()
-                .stroke(Color.blue, lineWidth: 10)
-                .frame(width: 300, height: 300)
-                .padding(30)
+            ZStack {
+                Circle()
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 20)
+                    .frame(width: 300, height: 300)
+                    .padding(30)
+                Circle()
+                    .trim(from: 0, to: Double(currentOz) / targetOz)
+                    .rotation(.degrees(-90))
+                    .stroke(Color.blue, lineWidth: 20)
+                    .frame(width: 300, height: 300)
+                    .padding(30)
+            }
             Button(action: {
-                addNewWater(intakeOz: 24)
+                withAnimation {
+                    addNewWater(intakeOz: 24)
+                }
             },
                    label: {
                 Text("Add 24 oz")
@@ -44,7 +67,9 @@ struct WaterView: View {
             }
             )
             Button(action: {
-                addNewWater(intakeOz: 32)
+                withAnimation {
+                    addNewWater(intakeOz: 32)
+                }
             },
                    label: {
                 Text("Add 32 oz")
@@ -55,9 +80,15 @@ struct WaterView: View {
                     .cornerRadius(40)
             }
             )
+
             List {
                 ForEach(waterObjects) { water in
-                    Text("\(water.intake)oz")
+                    if let createdAt = water.createdAt {
+                        Text("\(water.intake)oz, \(dateFormatter.string(from: createdAt))")
+                    } else {
+                        Text("\(water.intake)oz")
+                    }
+                    
                 }
                 .onDelete(perform: deleteItem)
                     
@@ -77,6 +108,7 @@ struct WaterView: View {
         newWater.id = UUID()
         newWater.dayID = dayID
         newWater.intake = intakeOz
+        newWater.createdAt = Date.now
         try? moc.save()
     }
     
