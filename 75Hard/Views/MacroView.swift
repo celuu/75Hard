@@ -47,6 +47,13 @@ struct MacroView: View {
         return (protein * 4) + (carbs * 4) + (fat * 9)
     }
     
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     var body: some View {
         VStack{
             Text("Target")
@@ -123,7 +130,18 @@ struct MacroView: View {
 
                 List {
                     ForEach(macroObjects) { macro in
-                        Text("\(macro.fat)")
+                        
+                            VStack {
+                                if let createdAt = macro.createdAt {
+                                Text("Protein: \(macro.protein), Carbs: \(macro.carbs), Fat:\(macro.fat)")
+                                Text("\(dateFormatter.string(from: createdAt))")
+
+                                } else {
+                                    Text(
+                                        "Protein: \(macro.protein), Carbs: \(macro.carbs), Fat:\(macro.fat)"
+                                    )
+                                }
+                            }
                     }
                     .onDelete(perform: deleteItem)
                    
@@ -151,6 +169,7 @@ struct MacroView: View {
         newMacros.fat = fatInput
         newMacros.protein = proteinInput
         newMacros.carbs = carbInput
+        newMacros.createdAt = Date.now
         try? moc.save()
     }
     

@@ -18,6 +18,13 @@ struct WorkoutView: View {
     let isOutdoor: Bool
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var workoutObjects: FetchedResults<Workout>
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
 
 
     init(dayID: String, isOutdoor: Bool) {
@@ -45,7 +52,11 @@ struct WorkoutView: View {
             )
             List {
                 ForEach(workoutObjects) { workout in
-                    Text(workout.activity ?? "Unknown")
+                    if let createdAt = workout.createdAt {
+                        Text("\(workout.activity ?? "Unknown"), \(dateFormatter.string(from: createdAt))")
+                    } else {
+                        Text("\(workout.activity ?? "Unknown")")
+                    }
                 }
                     .onDelete(perform: deleteItem)
             }
@@ -73,6 +84,7 @@ struct WorkoutView: View {
         newWorkout.dayID = dayID
         newWorkout.isOutdoor = isOutdoor
         newWorkout.activity = userInput
+        newWorkout.createdAt = Date.now
         try? moc.save()
     }
     
