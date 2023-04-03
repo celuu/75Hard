@@ -9,13 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var listViewModel: ListViewModel;
     let dayOne = "2023-03-26"
     
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
+    
+    @State var dayID: String
+    
+    init(dayID: String) {
+        self.dayID = dayID
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", self.dayID), animation: nil)
+    }
+    
+    func createDailySummaryIfNeeded() {
+        if !dailySummaries.isEmpty {
+            return
+        }
+        let newSummary = DailySummary(context: moc)
+        newSummary.id = UUID()
+        newSummary.dayID = dayID
+//        newSummary.createdAt = Date.now
+        try? moc.save()
+    }
+
+    func moveCurrentDateForward() {
+         dayID = Date.fromDayID(dayID).adjusting(days: 1).dayID
+//        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        createDailySummaryIfNeeded()
+    }
+
+    func moveCurrentDateBackward() {
+        dayID = Date.fromDayID(dayID).adjusting(days: -1).dayID
+//        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        createDailySummaryIfNeeded()
+    }
+    
     var body: some View {
+        // TODO: Make this a DailySummaryListView(dayID: dayID)
             List {
                 ForEach(PageType.all) { pageType in
-                    LineItemView(pageType: pageType, dayID: listViewModel.dayID)
+                    LineItemView(pageType: pageType, dayID: dayID)
                 }
             }
             .listStyle(PlainListStyle())
@@ -23,29 +56,29 @@ struct ContentView: View {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("75 Hard - Day 1")
-                        Text(listViewModel.dayID)
+                        Text(dayID)
                     }
                 }
             })
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
               leading: Button(action: {
-                  listViewModel.moveCurrentDateBackward()
+                  moveCurrentDateBackward()
               }, label: {
                 Image(systemName: "arrow.left")
               }),
                 trailing:
                 Button(action: {
-                    listViewModel.moveCurrentDateForward()
+                    moveCurrentDateForward()
                 }, label: {
                   Image(systemName: "arrow.right")
                 })
             )
-
-
-
+            .onAppear {
+                // TODO: Move this a DailySummaryListView(dayID: dayID) still onAppear
+                createDailySummaryIfNeeded()
+            }
     }
-    
     
 }
 
@@ -53,9 +86,8 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ContentView()
+            ContentView(dayID: Date.now.localDayID)
         }
-        .environmentObject(ListViewModel())
     }
 }
 

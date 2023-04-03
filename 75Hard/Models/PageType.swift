@@ -8,8 +8,14 @@
 import Foundation
 import SwiftUI
 
-//Immutable struct
-enum PageType: Int, Identifiable {
+// Immutable struct
+enum PageType: Identifiable {
+    
+    public typealias ID = Int
+    public var id: Int {
+        hashValue
+    }
+    
     case water
     case reading
     case workout
