@@ -9,28 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let dayOne = "2023-03-26"
+    let dayOne = "2023-04-4"
     
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
+    
     
     @State var dayID: String
     
     init(dayID: String) {
-        self.dayID = dayID
-        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", self.dayID), animation: nil)
+
     }
     
-    func createDailySummaryIfNeeded() {
-        if !dailySummaries.isEmpty {
-            return
-        }
-        let newSummary = DailySummary(context: moc)
-        newSummary.id = UUID()
-        newSummary.dayID = dayID
-//        newSummary.createdAt = Date.now
-        try? moc.save()
-    }
 
     func moveCurrentDateForward() {
          dayID = Date.fromDayID(dayID).adjusting(days: 1).dayID
@@ -46,12 +34,8 @@ struct ContentView: View {
     
     var body: some View {
         // TODO: Make this a DailySummaryListView(dayID: dayID)
-            List {
-                ForEach(PageType.all) { pageType in
-                    LineItemView(pageType: pageType, dayID: dayID)
-                }
-            }
-            .listStyle(PlainListStyle())
+
+            
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     VStack {
