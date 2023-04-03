@@ -9,27 +9,28 @@ import SwiftUI
 
 struct LineItemView: View {
     
-    let item: ItemModel
+    let pageType: PageType
+    
     let dayID: String
     @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         HStack{
-            if item.pageType != .drink {
-                NavigationLink(destination: getDestination(pageType: item.pageType), label:{
-                    Text (item.title)
+            if pageType != .drink {
+                NavigationLink(destination: pageType.getDestination(dayID: dayID), label:{
+                    Text(pageType.getInformation())
                 })
             } else {
-                Text(item.title)
+                Text(pageType.getInformation())
                 Spacer()
             }
 
 
-            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
-                .foregroundColor(item.isCompleted ? .green : .red)
+            Image(systemName: false ? "checkmark.circle" : "circle")
+                .foregroundColor(false ? .green : .red)
                 .onTapGesture {
                     withAnimation(.linear){
-                        listViewModel.updateItem(item: item)
+//                        listViewModel.updateItem(item: item)
                     }
                 }
                 
@@ -37,36 +38,13 @@ struct LineItemView: View {
         .font(.title2)
         .padding()
     }
-    
-    @ViewBuilder
-    func getDestination(pageType: ItemModel.PageType) -> some View {
-        switch pageType {
-        case .water:
-            WaterView(dayID: dayID)
-        case .reading:
-            PageView(dayID: dayID)
-        case .workout:
-            WorkoutView(dayID: dayID, isOutdoor: false)
-        case .outsideWorkout:
-            WorkoutView(dayID: dayID, isOutdoor: true)
-        case .macros:
-            MacroView(dayID: dayID)
-        case .photo:
-            PhotoView(dayID: dayID)
-        case .drink:
-            DrinkView(dayID: dayID)
-        }
-    }
-    
 }
 
 
 struct LineItemView_Previews: PreviewProvider {
-    
-    static var item1 = ItemModel(title: "", isCompleted: false, pageType: .water)
-    
+        
     static var previews: some View {
-        LineItemView(item: item1, dayID: Date.now.localDayID)
+        LineItemView(pageType: .outsideWorkout, dayID: Date.now.localDayID)
     }
     
 }

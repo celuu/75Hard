@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct _5HardApp: App {
     
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
+    @StateObject var listViewModel: ListViewModel = ListViewModel(dayID: Date.now.localDayID)
     @StateObject private var dataController = DataController()
     
     

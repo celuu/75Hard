@@ -21,9 +21,8 @@
 		395B5E3729C5035E002CFB13 /* _5HardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395B5E3629C5035E002CFB13 /* _5HardUITestsLaunchTests.swift */; };
 		39FA788C29C52382001452FF /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA788B29C52382001452FF /* PageView.swift */; };
 		39FA788E29C55E93001452FF /* LineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA788D29C55E93001452FF /* LineItemView.swift */; };
-		39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789129C8F2D7001452FF /* ItemModel.swift */; };
+		39FA789229C8F2D7001452FF /* PageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789129C8F2D7001452FF /* PageType.swift */; };
 		39FA789529C92E50001452FF /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789429C92E50001452FF /* ListViewModel.swift */; };
-		39FA789729C93685001452FF /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789629C93685001452FF /* AddHabit.swift */; };
 		39FA789929CAA918001452FF /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789829CAA918001452FF /* WorkoutView.swift */; };
 		39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789A29CAB9C6001452FF /* MacroView.swift */; };
 		39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789E29CAB9F9001452FF /* WaterView.swift */; };
@@ -64,9 +63,8 @@
 		395B5E3629C5035E002CFB13 /* _5HardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _5HardUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		39FA788B29C52382001452FF /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		39FA788D29C55E93001452FF /* LineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineItemView.swift; sourceTree = "<group>"; };
-		39FA789129C8F2D7001452FF /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		39FA789129C8F2D7001452FF /* PageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageType.swift; sourceTree = "<group>"; };
 		39FA789429C92E50001452FF /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		39FA789629C93685001452FF /* AddHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabit.swift; sourceTree = "<group>"; };
 		39FA789829CAA918001452FF /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		39FA789A29CAB9C6001452FF /* MacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroView.swift; sourceTree = "<group>"; };
 		39FA789E29CAB9F9001452FF /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				39FA788B29C52382001452FF /* PageView.swift */,
-				39FA789629C93685001452FF /* AddHabit.swift */,
 				39FA789829CAA918001452FF /* WorkoutView.swift */,
 				39FA789A29CAB9C6001452FF /* MacroView.swift */,
 				39FA789E29CAB9F9001452FF /* WaterView.swift */,
@@ -179,7 +176,7 @@
 		39FA789029C8F143001452FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				39FA789129C8F2D7001452FF /* ItemModel.swift */,
+				39FA789129C8F2D7001452FF /* PageType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,9 +319,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39FA789229C8F2D7001452FF /* ItemModel.swift in Sources */,
+				39FA789229C8F2D7001452FF /* PageType.swift in Sources */,
 				39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */,
-				39FA789729C93685001452FF /* AddHabit.swift in Sources */,
 				3935298A29D7977A00EF2DDF /* DrinkView.swift in Sources */,
 				39FA789929CAA918001452FF /* WorkoutView.swift in Sources */,
 				39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */,

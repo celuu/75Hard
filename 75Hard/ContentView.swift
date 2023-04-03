@@ -14,18 +14,16 @@ struct ContentView: View {
     
     var body: some View {
             List {
-                ForEach(listViewModel.items) { item in
-                    LineItemView(item: item, dayID: listViewModel.currentDayID)
+                ForEach(PageType.all) { pageType in
+                    LineItemView(pageType: pageType, dayID: listViewModel.dayID)
                 }
-                .onDelete(perform: listViewModel.deleteItem)
-                .onMove(perform: listViewModel.moveItem)
             }
             .listStyle(PlainListStyle())
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("75 Hard - Day 1")
-                        Text(listViewModel.currentDayID)
+                        Text(listViewModel.dayID)
                     }
                 }
             })

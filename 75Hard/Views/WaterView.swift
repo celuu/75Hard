@@ -9,7 +9,7 @@ import CoreData
 import SwiftUI
 
 struct WaterView: View {
-
+    
     init(dayID: String) {
         self.dayID = dayID
         _waterObjects = FetchRequest<Water>(sortDescriptors: [

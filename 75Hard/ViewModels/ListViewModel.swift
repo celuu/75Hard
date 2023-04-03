@@ -6,60 +6,42 @@
 //
 
 import Foundation
+import SwiftUI
+import CoreData
 
 class ListViewModel: ObservableObject {
     
-    @Published var items: [ItemModel] = []
-
-    @Published var currentDayID = Date.now.localDayID
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
     
-    init(){
-        getItems()
+    var dayID: String
+    
+    init(dayID: String) {
+        self.dayID = dayID
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        createDailySummaryIfNeeded()
     }
     
-    func getItems() {
-        let newItems = [
-            ItemModel(title: "1 Gallon of Water", isCompleted: false, pageType: .water),
-            ItemModel(title: "Read 10 Pages", isCompleted: false, pageType: .reading),
-            ItemModel(title: "45 Min Workout", isCompleted: false, pageType: .workout),
-            ItemModel(title: "45 Min Workout - Outside", isCompleted: false, pageType: .outsideWorkout),
-            ItemModel(title: "Follow Macros", isCompleted: false, pageType: .macros),
-            ItemModel(title: "Progress Photo", isCompleted: false, pageType: .photo),
-            ItemModel(title: "Did not drink", isCompleted: false, pageType: .drink)
-        ]
-        items.append(contentsOf: newItems)
-    }
-    
-    func deleteItem(indexSet: IndexSet){
-        items.remove(atOffsets: indexSet)
-    }
-    
-    func moveItem(from: IndexSet, to: Int){
-        items.move(fromOffsets: from, toOffset: to)
-    }
-    
-    func addItem(title: String){
-        let newItem = ItemModel(title: title, isCompleted: false, pageType: .water)
-        items.append(newItem)
-    }
-    
-    func updateItem(item: ItemModel){
-        if let index = items.firstIndex(where: {$0.id == item.id}) {
-            items[index] = item.updateCompletion()
+    func createDailySummaryIfNeeded() {
+        if !dailySummaries.isEmpty {
+            return
         }
+        let newSummary = DailySummary(context: moc)
+        newSummary.id = UUID()
+        newSummary.dayID = dayID
+//        newSummary.createdAt = Date.now
+        try? moc.save()
     }
 
     func moveCurrentDateForward() {
-        currentDayID = Date.fromDayID(currentDayID).adjusting(days: 1).dayID
+        dayID = Date.fromDayID(dayID).adjusting(days: 1).dayID
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        createDailySummaryIfNeeded()
     }
 
     func moveCurrentDateBackward() {
-        currentDayID = Date.fromDayID(currentDayID).adjusting(days: -1).dayID
-    }
-    
-    func fetchOrCreateSummary() {
-        // query with the new day ID
-        // check for exactly 1 summary object being returned
-        // if there is not a summary, create a new one with the day ID
+        dayID = Date.fromDayID(dayID).adjusting(days: -1).dayID
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        createDailySummaryIfNeeded()
     }
 }
