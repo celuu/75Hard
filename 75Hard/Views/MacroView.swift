@@ -17,11 +17,15 @@ struct MacroView: View {
     var fatTarget: Int = 44
     let dayID: String
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var macroObjects: FetchedResults<Macro>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.createdAt, order: .reverse)
+    ]) var macroObjects: FetchedResults<Macro>
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
 
     init(dayID: String) {
         self.dayID = dayID
         _macroObjects = FetchRequest<Macro>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
     }
 
     var isProteinGood: Bool {
@@ -171,6 +175,7 @@ struct MacroView: View {
         newMacros.carbs = carbInput
         newMacros.createdAt = Date.now
         try? moc.save()
+        updateSummaryItem()
     }
     
     func deleteItem(at offsets: IndexSet){
@@ -178,6 +183,16 @@ struct MacroView: View {
             let macro = macroObjects[offset]
             moc.delete(macro)
         }
+        try? moc.save()
+        updateSummaryItem()
+    }
+    
+    func updateSummaryItem(){
+        guard let summary = dailySummaries.first else {
+            return
+        }
+
+        summary.isMacrosGood = isFatGood && isCarbGood && isProteinGood
         try? moc.save()
     }
 

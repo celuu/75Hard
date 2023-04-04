@@ -19,25 +19,11 @@ struct DrinkView: View {
 
     var body: some View {
         Toggle(isOn: $isOn) {
-            Text("I did not drink alcohol today")
-        }
-        .toggleStyle(iOSCheckboxToggleStyle())
-    }
-
-    struct iOSCheckboxToggleStyle: ToggleStyle {
-        func makeBody(configuration: Configuration) -> some View {
-            Button(action: {
-                configuration.isOn.toggle()
-
-            }, label: {
-                HStack {
-                    Image(systemName: configuration.isOn ? "checkmark.square" : "square")
-
-                    configuration.label
-                }
-            })
+            Text("I did nooday")
         }
     }
+
+
 }
 
 struct DrinkView_Previews: PreviewProvider {

@@ -11,20 +11,14 @@ struct ContentView: View {
     
     let dayOne = "2023-04-4"
     
-    
-    
     @State var dayID: String = Date.now.localDayID
 
     func moveCurrentDateForward() {
          dayID = Date.fromDayID(dayID).adjusting(days: 1).dayID
-//        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
-
     }
 
     func moveCurrentDateBackward() {
         dayID = Date.fromDayID(dayID).adjusting(days: -1).dayID
-//        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
-
     }
     
     var body: some View {

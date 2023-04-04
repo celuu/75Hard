@@ -17,7 +17,10 @@ struct WorkoutView: View {
     let dayID: String
     let isOutdoor: Bool
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var workoutObjects: FetchedResults<Workout>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.createdAt, order: .reverse)
+    ]) var workoutObjects: FetchedResults<Workout>
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -31,6 +34,7 @@ struct WorkoutView: View {
         self.dayID = dayID
         self.isOutdoor = isOutdoor
         _workoutObjects = FetchRequest<Workout>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@ AND isOutdoor == %@", dayID, NSNumber(value: isOutdoor)), animation: nil)
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
     }
     
     var body: some View {
@@ -86,6 +90,8 @@ struct WorkoutView: View {
         newWorkout.activity = userInput
         newWorkout.createdAt = Date.now
         try? moc.save()
+        
+        updateSummaryItem(isOutdoor: isOutdoor)
     }
     
     func textIsGood() -> Bool {
@@ -107,6 +113,23 @@ struct WorkoutView: View {
             moc.delete(workout)
         }
         try? moc.save()
+        
+        updateSummaryItem(isOutdoor: isOutdoor)
+    }
+    
+    func updateSummaryItem(isOutdoor: Bool){
+        guard let summary = dailySummaries.first else {
+            return
+        }
+        if isOutdoor {
+            summary.isWorkoutInsideGood = !workoutObjects.isEmpty
+        } else {
+            summary.isWorkoutOutsideGood = !workoutObjects.isEmpty
+        }
+        
+       
+        try? moc.save()
+
     }
     
     

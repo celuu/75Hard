@@ -29,11 +29,6 @@ struct LineItemView: View {
 
             Image(systemName: isCompleted ? "checkmark.circle" : "circle")
                 .foregroundColor(isCompleted ? .green : .red)
-                .onTapGesture {
-                    withAnimation(.linear){
-//                        listViewModel.updateItem(item: item)
-                    }
-                }
                 
         }
         .font(.title2)

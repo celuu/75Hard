@@ -12,13 +12,24 @@ struct PageView: View {
     @State var userInput: String = ""
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var nuggetObjects: FetchedResults<Read>
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
 
     let dayID: String
 
     init(dayID: String) {
         self.dayID = dayID
-        _nuggetObjects = FetchRequest<Read>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        _nuggetObjects = FetchRequest<Read>(sortDescriptors: [
+            SortDescriptor(\.createdAt, order: .reverse)
+        ], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
     }
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
     
     var body: some View {
             VStack{
@@ -40,7 +51,11 @@ struct PageView: View {
                 )
                 List {
                     ForEach(nuggetObjects) { nugget in
-                        Text(nugget.nugget ?? "Unknown")
+                        if let createdAt = nugget.createdAt {
+                            Text("\(nugget.nugget ?? "Unknown"), \(dateFormatter.string(from: createdAt))")
+                        } else {
+                            Text("\(nugget.nugget ?? "Unknown")")
+                        }
                     }
                     .onDelete(perform: deleteItem)
                 }
@@ -63,8 +78,11 @@ struct PageView: View {
         let newNugget = Read(context: moc)
         newNugget.id = UUID()
         newNugget.nugget = userInput
+        newNugget.createdAt = Date.now
         newNugget.dayID = dayID
         try? moc.save()
+        
+        updateSummaryItem()
     }
     
     func deleteItem(at offsets: IndexSet){
@@ -73,6 +91,18 @@ struct PageView: View {
             moc.delete(nugget)
         }
         try? moc.save()
+        
+        updateSummaryItem()
+    }
+    
+    func updateSummaryItem(){
+        guard let summary = dailySummaries.first else {
+            return
+        }
+        summary.isReadGood = !nuggetObjects.isEmpty
+       
+        try? moc.save()
+
     }
 }
 

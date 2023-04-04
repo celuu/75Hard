@@ -15,10 +15,12 @@ struct PhotoView: View {
     let dayID: String
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var photoObjects: FetchedResults<Photo>
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
     
     init(dayID: String) {
         self.dayID = dayID
         _photoObjects = FetchRequest<Photo>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
     }
 
 
@@ -77,6 +79,18 @@ struct PhotoView: View {
         newImage.dayID = dayID
         newImage.data = data
         try? moc.save()
+        
+        updateSummaryItem()
+    }
+    
+    func updateSummaryItem(){
+        guard let summary = dailySummaries.first else {
+            return
+        }
+
+        summary.isPhotoGood = !photoObjects.isEmpty
+        try? moc.save()
+
     }
     
     
