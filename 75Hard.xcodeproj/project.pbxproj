@@ -129,8 +129,8 @@
 				39FA788F29C8F136001452FF /* Views */,
 				395B5E1D29C5035E002CFB13 /* Assets.xcassets */,
 				2224288D29D0CEA600EA5743 /* DataController.swift */,
-				2224288A29D0CCC300EA5743 /* Main.xcdatamodeld */,
 				2244F58029D141D400C27BA2 /* Extensions.swift */,
+				2224288A29D0CCC300EA5743 /* Main.xcdatamodeld */,
 				395B5E1F29C5035E002CFB13 /* Preview Content */,
 			);
 			path = 75Hard;

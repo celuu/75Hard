@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+
+
 // Immutable struct
 enum PageType: Identifiable {
     
@@ -43,8 +45,12 @@ enum PageType: Identifiable {
         case .drink:
             return "Did not drink"
         }
-    } 
-    
+    }
+
+
+
+
+
     @ViewBuilder
     func getDestination(dayID: String) -> some View {
         switch self {

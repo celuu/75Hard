@@ -12,9 +12,9 @@ struct MacroView: View {
     @State var proteinInput: Int16 = 0
     @State var carbInput: Int16 = 0
     @State var fatInput: Int16 = 0
-    var proteinTarget: Int = 136
-    var carbTarget: Int = 181
-    var fatTarget: Int = 41
+    var proteinTarget: Int = 146
+    var carbTarget: Int = 194
+    var fatTarget: Int = 44
     let dayID: String
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var macroObjects: FetchedResults<Macro>

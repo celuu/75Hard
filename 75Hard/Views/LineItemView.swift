@@ -10,6 +10,7 @@ import SwiftUI
 struct LineItemView: View {
     
     let pageType: PageType
+    let isCompleted: Bool
     
     let dayID: String
     @EnvironmentObject var listViewModel: ListViewModel
@@ -26,8 +27,8 @@ struct LineItemView: View {
             }
 
 
-            Image(systemName: false ? "checkmark.circle" : "circle")
-                .foregroundColor(false ? .green : .red)
+            Image(systemName: isCompleted ? "checkmark.circle" : "circle")
+                .foregroundColor(isCompleted ? .green : .red)
                 .onTapGesture {
                     withAnimation(.linear){
 //                        listViewModel.updateItem(item: item)
@@ -44,7 +45,7 @@ struct LineItemView: View {
 struct LineItemView_Previews: PreviewProvider {
         
     static var previews: some View {
-        LineItemView(pageType: .outsideWorkout, dayID: Date.now.localDayID)
+        LineItemView(pageType: .outsideWorkout, isCompleted: false, dayID: Date.now.localDayID )
     }
     
 }

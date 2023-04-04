@@ -12,7 +12,8 @@ struct DailySummaryListView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest var dailySummaries: FetchedResults<DailySummary>
     
-    let dayID:String
+    let dayID: String
+
     
     init(dayID: String) {
         self.dayID = dayID
@@ -29,16 +30,44 @@ struct DailySummaryListView: View {
         try? moc.save()
     }
 
+
     
     var body: some View {
         List {
             ForEach(PageType.all) { pageType in
-                LineItemView(pageType: pageType, dayID: dayID)
+                LineItemView(pageType: pageType, isCompleted: getIsCompleted(pageType: pageType), dayID: dayID )
+
             }
         }
         .listStyle(PlainListStyle())
+        .onAppear {
+            createDailySummaryIfNeeded()
+        }
+    }
+
+    func getIsCompleted(pageType: PageType) -> Bool {
+        guard let summary = dailySummaries.first else {
+            return false
+        }
+        switch pageType {
+        case .water:
+            return summary.isWaterGood
+        case .reading:
+            return summary.isReadGood
+        case .workout:
+            return summary.isWorkoutOutsideGood
+        case .outsideWorkout:
+            return summary.isWorkoutInsideGood
+        case .macros:
+            return summary.isMacrosGood
+        case .photo:
+            return summary.isPhotoGood
+        case .drink:
+            return summary.isDrinkGood
+        }
     }
 }
+
 
 struct DailySummaryListView_Previews: PreviewProvider {
     static var previews: some View {

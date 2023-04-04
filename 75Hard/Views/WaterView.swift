@@ -15,11 +15,14 @@ struct WaterView: View {
         _waterObjects = FetchRequest<Water>(sortDescriptors: [
             SortDescriptor(\.createdAt, order: .reverse)
         ], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
+        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
     }
+    
 
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) var moc
     @FetchRequest var waterObjects: FetchedResults<Water>
+    @FetchRequest var dailySummaries: FetchedResults<DailySummary>
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -110,6 +113,8 @@ struct WaterView: View {
         newWater.intake = intakeOz
         newWater.createdAt = Date.now
         try? moc.save()
+
+        updateSummaryItem()
     }
     
     func deleteItem(at offsets: IndexSet){
@@ -118,7 +123,21 @@ struct WaterView: View {
             moc.delete(water)
         }
         try? moc.save()
+
+        updateSummaryItem()
     }
+
+    func updateSummaryItem(){
+        guard let summary = dailySummaries.first else {
+            return
+        }
+
+        summary.isWaterGood = Double(currentOz) >= targetOz
+        try? moc.save()
+
+    }
+
+
     
 }
 

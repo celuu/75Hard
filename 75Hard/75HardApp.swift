@@ -10,16 +10,15 @@ import SwiftUI
 @main
 struct _5HardApp: App {
     
-    @StateObject var listViewModel: ListViewModel = ListViewModel(dayID: Date.now.localDayID)
+
     @StateObject private var dataController = DataController()
     
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                ContentView(dayID: Date.now.localDayID)
             }
-            .environmentObject(listViewModel)
             .environment(\.managedObjectContext, dataController.container.viewContext)
             
         }

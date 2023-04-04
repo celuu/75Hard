@@ -13,37 +13,28 @@ struct ContentView: View {
     
     
     
-    @State var dayID: String
-    
-    init(dayID: String) {
-
-    }
-    
+    @State var dayID: String = Date.now.localDayID
 
     func moveCurrentDateForward() {
          dayID = Date.fromDayID(dayID).adjusting(days: 1).dayID
 //        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
-        createDailySummaryIfNeeded()
+
     }
 
     func moveCurrentDateBackward() {
         dayID = Date.fromDayID(dayID).adjusting(days: -1).dayID
 //        _dailySummaries = FetchRequest<DailySummary>(sortDescriptors: [], predicate: NSPredicate(format: "dayID BEGINSWITH %@", dayID), animation: nil)
-        createDailySummaryIfNeeded()
+
     }
     
     var body: some View {
-        // TODO: Make this a DailySummaryListView(dayID: dayID)
+        VStack {
+            Text("75 Hard - Day 1")
+            Text(dayID)
+            DailySummaryListView(dayID: dayID)
+        }
 
-            
-            .toolbar(content: {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("75 Hard - Day 1")
-                        Text(dayID)
-                    }
-                }
-            })
+
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
               leading: Button(action: {
@@ -58,10 +49,7 @@ struct ContentView: View {
                   Image(systemName: "arrow.right")
                 })
             )
-            .onAppear {
-                // TODO: Move this a DailySummaryListView(dayID: dayID) still onAppear
-                createDailySummaryIfNeeded()
-            }
+
     }
     
 }
