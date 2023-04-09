@@ -17,14 +17,12 @@ struct LineItemView: View {
     
     var body: some View {
         HStack{
-            if pageType != .drink {
+
                 NavigationLink(destination: pageType.getDestination(dayID: dayID), label:{
                     Text(pageType.getInformation())
                 })
-            } else {
-                Text(pageType.getInformation())
-                Spacer()
-            }
+        
+            
 
 
             Image(systemName: isCompleted ? "checkmark.circle" : "circle")

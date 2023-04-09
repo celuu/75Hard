@@ -62,8 +62,6 @@ struct DailySummaryListView: View {
             return summary.isMacrosGood
         case .photo:
             return summary.isPhotoGood
-        case .drink:
-            return summary.isDrinkGood
         }
     }
 }

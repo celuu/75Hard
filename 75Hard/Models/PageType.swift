@@ -24,9 +24,8 @@ enum PageType: Identifiable {
     case outsideWorkout
     case macros
     case photo
-    case drink
     
-    static let all: [PageType] = [.water, .reading, .workout, .outsideWorkout, .macros, .photo, .drink]
+    static let all: [PageType] = [.water, .reading, .workout, .outsideWorkout, .macros, .photo]
     
     func getInformation() -> String {
         switch self {
@@ -42,8 +41,6 @@ enum PageType: Identifiable {
             return "Follow Macros"
         case .photo:
             return "Progress Photo"
-        case .drink:
-            return "Did not drink"
         }
     }
 
@@ -66,8 +63,6 @@ enum PageType: Identifiable {
             MacroView(dayID: dayID)
         case .photo:
             PhotoView(dayID: dayID)
-        case .drink:
-            DrinkView(dayID: dayID)
         }
     }
 }
