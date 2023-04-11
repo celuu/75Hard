@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let dayOne = "2023-04-4"
-    
+    let dayOne = "2023-04-04"
+    var dayLength: Int = 1
+
     @State var dayID: String = Date.now.localDayID
 
     func moveCurrentDateForward() {
@@ -20,6 +21,17 @@ struct ContentView: View {
     func moveCurrentDateBackward() {
         dayID = Date.fromDayID(dayID).adjusting(days: -1).dayID
     }
+    
+    func dateFromString(string: String) -> Date {
+            let dateFormatter = ISO8601DateFormatter()
+            dateFormatter.formatOptions = [.withFullDate] // Added format options
+            let date = dateFormatter.date(from: string) ?? Date.now
+            return date
+    }
+    
+//    mutating func getDayLength() {
+//        var dateDayOne = dateFromString(string: dayOne)
+//    }
     
     var body: some View {
         VStack {

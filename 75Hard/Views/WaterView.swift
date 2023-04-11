@@ -9,8 +9,8 @@ import CoreData
 import SwiftUI
 
 struct WaterView: View {
-    
-    init(dayID: String) {
+    @Binding var userInput: Int
+    init(dayID: String, userInput: Int) {
         self.dayID = dayID
         _waterObjects = FetchRequest<Water>(sortDescriptors: [
             SortDescriptor(\.createdAt, order: .reverse)
@@ -23,6 +23,7 @@ struct WaterView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest var waterObjects: FetchedResults<Water>
     @FetchRequest var dailySummaries: FetchedResults<DailySummary>
+    
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -54,6 +55,7 @@ struct WaterView: View {
                     .stroke(Color.blue, lineWidth: 20)
                     .frame(width: 300, height: 300)
                     .padding(30)
+                Text("Hi")
             }
             Button(action: {
                 withAnimation {
@@ -83,6 +85,9 @@ struct WaterView: View {
                     .cornerRadius(40)
             }
             )
+            NavigationLink(destination: CustomWaterView(), label: {
+                Text("Custom Water Amount")
+            })
 
             List {
                 ForEach(waterObjects) { water in
@@ -144,7 +149,7 @@ struct WaterView: View {
 struct WaterView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            WaterView(dayID: Date.now.localDayID)
+            WaterView(dayID: Date.now.localDayID, userInput: 20)
         }
     }
 }

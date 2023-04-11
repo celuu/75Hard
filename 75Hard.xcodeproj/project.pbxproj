@@ -27,6 +27,7 @@
 		39FA789929CAA918001452FF /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789829CAA918001452FF /* WorkoutView.swift */; };
 		39FA789B29CAB9C6001452FF /* MacroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789A29CAB9C6001452FF /* MacroView.swift */; };
 		39FA789F29CAB9F9001452FF /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA789E29CAB9F9001452FF /* WaterView.swift */; };
+		39FCFF5329E60C7E009C3F41 /* CustomWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCFF5229E60C7E009C3F41 /* CustomWaterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		39FA789A29CAB9C6001452FF /* MacroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroView.swift; sourceTree = "<group>"; };
 		39FA789E29CAB9F9001452FF /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		39FA78A529D3A2E5001452FF /* -5Hard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "-5Hard-Info.plist"; sourceTree = SOURCE_ROOT; };
+		39FCFF5229E60C7E009C3F41 /* CustomWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWaterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				39FA788B29C52382001452FF /* PageView.swift */,
+				39FCFF5229E60C7E009C3F41 /* CustomWaterView.swift */,
 				39FA789829CAA918001452FF /* WorkoutView.swift */,
 				39FA789A29CAB9C6001452FF /* MacroView.swift */,
 				39F7F1FE29DB4A7E00C1240C /* DailySummaryListView.swift */,
@@ -331,6 +334,7 @@
 				39FA789529C92E50001452FF /* ListViewModel.swift in Sources */,
 				2224288E29D0CEA600EA5743 /* DataController.swift in Sources */,
 				39FA788C29C52382001452FF /* PageView.swift in Sources */,
+				39FCFF5329E60C7E009C3F41 /* CustomWaterView.swift in Sources */,
 				39F7F1FF29DB4A7E00C1240C /* DailySummaryListView.swift in Sources */,
 				2244F58129D141D400C27BA2 /* Extensions.swift in Sources */,
 				2224288C29D0CCC300EA5743 /* Main.xcdatamodeld in Sources */,
