@@ -32,7 +32,7 @@ struct ContentView: View {
 
     
     func getDayLength() -> Int {
-        var dateDayOne = dateFromString(string: dayOne)
+        let dateDayOne = dateFromString(string: dayOne)
         guard let diffInDays = Calendar.current.dateComponents([.day], from: dateDayOne, to: dateFromString(string: dayID)).day else {
             return 1
         }

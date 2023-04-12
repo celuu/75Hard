@@ -57,7 +57,7 @@ struct WaterView: View {
                     .stroke(Color.blue, lineWidth: 20)
                     .frame(width: 300, height: 300)
                     .padding(30)
-                Text("Hi")
+                Text("\(Double(currentOz)/targetOz * 100.rounded(.towardZero))%")
             }
             Button(action: {
                 withAnimation {
@@ -87,9 +87,9 @@ struct WaterView: View {
                     .cornerRadius(40)
             }
             )
-            NavigationLink(destination: CustomWaterView(), label: {
-                Text("Custom Water Amount")
-            })
+//            NavigationLink(destination: CustomWaterView(), label: {
+//                Text("Custom Water Amount")
+//            })
 
             List {
                 ForEach(waterObjects) { water in
