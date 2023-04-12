@@ -9,8 +9,10 @@ import CoreData
 import SwiftUI
 
 struct WaterView: View {
-    @Binding var userInput: Int
-    init(dayID: String, userInput: Int) {
+//    @Binding var userInput: Int
+    
+    
+    init(dayID: String) {
         self.dayID = dayID
         _waterObjects = FetchRequest<Water>(sortDescriptors: [
             SortDescriptor(\.createdAt, order: .reverse)
@@ -149,7 +151,7 @@ struct WaterView: View {
 struct WaterView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            WaterView(dayID: Date.now.localDayID, userInput: 20)
+            WaterView(dayID: Date.now.localDayID)
         }
     }
 }

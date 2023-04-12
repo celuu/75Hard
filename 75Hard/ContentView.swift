@@ -29,13 +29,19 @@ struct ContentView: View {
             return date
     }
     
-//    mutating func getDayLength() {
-//        var dateDayOne = dateFromString(string: dayOne)
-//    }
+
+    
+    func getDayLength() -> Int {
+        var dateDayOne = dateFromString(string: dayOne)
+        guard let diffInDays = Calendar.current.dateComponents([.day], from: dateDayOne, to: dateFromString(string: dayID)).day else {
+            return 1
+        }
+        return diffInDays
+    }
     
     var body: some View {
         VStack {
-            Text("75 Hard - Day 1")
+            Text("75 Hard - Day \(getDayLength())")
             Text(dayID)
             DailySummaryListView(dayID: dayID)
         }

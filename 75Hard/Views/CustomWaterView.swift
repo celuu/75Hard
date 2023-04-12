@@ -51,7 +51,17 @@ struct CustomWaterView: View {
         userInput -= 1
     }
     
-    
+//    func addNewWater(intakeOz: Int16) {
+//        let impactMed = UIImpactFeedbackGenerator(style: .medium)
+//        impactMed.impactOccurred()
+//        
+//        let newWater = Water(context: moc)
+//        newWater.id = UUID()
+//        newWater.dayID = dayID
+//        newWater.intake = intakeOz
+//        newWater.createdAt = Date.now
+//        try? moc.save()
+//    }
     
 }
 
